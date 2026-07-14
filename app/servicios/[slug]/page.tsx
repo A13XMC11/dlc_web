@@ -5,6 +5,8 @@ import ServiceDetail from "@/components/servicios/ServiceDetail";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { serviciosData } from "@/components/servicios/servicios-data";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL, breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -45,8 +47,19 @@ export default async function ServicioPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Inicio", url: SITE_URL },
+    { name: "Servicios", url: `${SITE_URL}/servicios` },
+    { name: service.title, url: `${SITE_URL}/servicios/${service.slug}` },
+  ]);
+  const faqs = faqSchema(service.faqs);
+
   return (
     <div className="relative min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd data={breadcrumbs} />
+      {faqs && <JsonLd data={faqs} />}
+
       <NavbarService />
 
       <main className="flex-grow">

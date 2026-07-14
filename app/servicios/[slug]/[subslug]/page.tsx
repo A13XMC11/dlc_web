@@ -5,6 +5,8 @@ import SubcategoryDetail from "@/components/servicios/SubcategoryDetail";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { serviciosData } from "@/components/servicios/servicios-data";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL, breadcrumbSchema, subcategorySchema } from "@/lib/seo/schema";
 
 type Props = {
   params: Promise<{ slug: string; subslug: string }>;
@@ -53,8 +55,18 @@ export default async function SubcategoryPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Inicio", url: SITE_URL },
+    { name: "Servicios", url: `${SITE_URL}/servicios` },
+    { name: service.title, url: `${SITE_URL}/servicios/${service.slug}` },
+    { name: subcategory.title, url: `${SITE_URL}/servicios/${service.slug}/${subcategory.slug}` },
+  ]);
+
   return (
     <div className="relative min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <JsonLd data={subcategorySchema(service, subcategory)} />
+      <JsonLd data={breadcrumbs} />
+
       <NavbarService />
 
       <main className="flex-grow">

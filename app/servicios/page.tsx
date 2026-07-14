@@ -4,9 +4,12 @@ import CategoriasIndexGrid from "@/components/servicios/CategoriasIndexGrid";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Servicios | DLC Tecnológica",
+  title: "Servicios de Seguridad Electrónica y Automatización | DLC Tecnológica",
   description:
     "Conoce todos los servicios de DLC Tecnológica: CCTV, alarmas, control de accesos, domótica, portones automáticos, ingeniería eléctrica, soporte técnico y software especializado en Ecuador.",
+  alternates: {
+    canonical: "/servicios",
+  },
 };
 
 export default function ServiciosPage() {

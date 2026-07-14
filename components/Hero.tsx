@@ -68,11 +68,11 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-sans text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white mb-6"
             >
-              Seguridad y
+              Seguridad Electrónica y
               <span className="block mt-1 bg-gradient-to-r from-cyan-neon via-blue-400 to-indigo-500 bg-clip-text text-transparent">
                 Automatización
               </span>
-              <span className="block mt-1 text-white">Premium</span>
+              <span className="block mt-1 text-white">Premium en Ecuador</span>
             </motion.h1>
 
             {/* Subtitle */}

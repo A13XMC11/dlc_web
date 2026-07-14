@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Seguridad Electrónica en Quito, Ecuador | DLC Tecnológica",
   description:
     "Sistemas integrales de seguridad electrónica en Quito y Ecuador: control de incendios, control de accesos, alarmas perimetrales y videovigilancia CCTV con tecnología certificada.",
+  alternates: {
+    canonical: "/servicios/seguridad-electronica",
+  },
 };
 
 export default function SeguridadElectronicaPage() {

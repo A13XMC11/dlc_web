@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Cotizador Interactivo | DLC Tecnológica",
   description:
     "Arma tu requerimiento de seguridad electrónica, domótica o ingeniería eléctrica en minutos. Configura cámaras, alarmas, accesos y más para recibir una cotización personalizada.",
+  alternates: {
+    canonical: "/cotizador",
+  },
 };
 
 export default function CotizadorPage() {
