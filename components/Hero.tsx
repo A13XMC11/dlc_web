@@ -1,13 +1,40 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownRight, ShieldCheck, Zap, Laptop, Wrench, Sparkles } from "lucide-react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import cameraHero from "@/public/dlc-image-5.jpg";
+import cameraHero2 from "@/public/dlc-image-1.jpg";
+import cameraHero3 from "@/public/project-cctv.png";
+import cameraHero4 from "@/public/project-gate.png";
+import cameraHero5 from "@/public/project-smart.png";
+
+interface HeroSlide {
+  src: StaticImageData;
+  label: string;
+}
+
+const HERO_SLIDES: HeroSlide[] = [
+  { src: cameraHero, label: "CAM-01" },
+  { src: cameraHero2, label: "CAM-02" },
+  { src: cameraHero3, label: "CAM-03" },
+  { src: cameraHero4, label: "CAM-04" },
+  { src: cameraHero5, label: "CAM-05" },
+];
+
+const SLIDE_INTERVAL_MS = 4000;
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, SLIDE_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!heroRef.current) return;
@@ -154,7 +181,7 @@ export default function Hero() {
                   <span className="text-xs font-mono text-red-400 font-semibold tracking-widest">● REC</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs font-mono text-slate-500">
-                  <span>CAM-01</span>
+                  <span>{HERO_SLIDES[activeSlide].label}</span>
                   <span className="text-cyan-neon/60">|</span>
                   <span>4K UHD</span>
                   <span className="text-cyan-neon/60">|</span>
@@ -162,17 +189,28 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Image container */}
+              {/* Image container — carousel */}
               <div className="relative aspect-[4/5] rounded-xl overflow-hidden">
-                <Image
-                  src={cameraHero}
-                  alt="DLC Tecnológica — Instalación CCTV profesional"
-                  fill
-                  priority
-                  placeholder="blur"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 500px"
-                  className="object-cover object-center"
-                />
+                <AnimatePresence initial={false} mode="sync">
+                  <motion.div
+                    key={activeSlide}
+                    initial={{ opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.9, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={HERO_SLIDES[activeSlide].src}
+                      alt="DLC Tecnológica — Instalación CCTV profesional"
+                      fill
+                      priority={activeSlide === 0}
+                      placeholder="blur"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 500px"
+                      className="object-cover object-center"
+                    />
+                  </motion.div>
+                </AnimatePresence>
 
                 {/* Bottom gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0e4956]/70 via-transparent to-transparent" />
@@ -202,6 +240,21 @@ export default function Hero() {
                   <div className="px-2 py-1 rounded bg-cyan-neon/10 border border-cyan-neon/20">
                     <p className="text-[10px] font-mono text-cyan-neon">IR NIGHT VISION</p>
                   </div>
+                </div>
+
+                {/* Carousel dot indicators */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10">
+                  {HERO_SLIDES.map((slide, idx) => (
+                    <button
+                      key={slide.label}
+                      type="button"
+                      onClick={() => setActiveSlide(idx)}
+                      aria-label={`Ver ${slide.label}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === activeSlide ? "w-5 bg-cyan-neon" : "w-1.5 bg-white/30 hover:bg-white/50"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 
