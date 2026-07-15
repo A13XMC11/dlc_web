@@ -15,7 +15,7 @@ import {
   DOMOTICA_ROOMS, DOMOTICA_FEATURES,
   FIRE_ZONES, FIRE_DETECTORS,
   GATE_COUNTS, GATE_TYPES,
-  URGENCY_OPTIONS,
+  URGENCY_OPTIONS, TECH_VISIT_OPTIONS,
   WizardConfig, OptionItem, initialConfig,
 } from "./cotizador-data";
 
@@ -38,6 +38,7 @@ function buildWhatsAppMessage(cfg: WizardConfig): string {
   const spaceSize = SPACE_SIZES.find((s) => s.id === cfg.spaceSize)?.label ?? cfg.spaceSize;
   const spaceSizeDesc = SPACE_SIZES.find((s) => s.id === cfg.spaceSize)?.description ?? "";
   const urgency = URGENCY_OPTIONS.find((u) => u.id === cfg.contact.urgency);
+  const techVisit = TECH_VISIT_OPTIONS.find((t) => t.id === cfg.contact.techVisit);
 
   let msg = `Hola DLC Tecnológica 👋\nSolicito cotización personalizada:\n`;
   msg += `\n🔧 *SERVICIOS REQUERIDOS:*\n${svcLabels.map((l) => `• ${l}`).join("\n")}\n`;
@@ -96,6 +97,7 @@ function buildWhatsAppMessage(cfg: WizardConfig): string {
   if (cfg.contact.email)  msg += `• Email: ${cfg.contact.email}\n`;
   if (cfg.contact.sector) msg += `• Sector / Dirección: ${cfg.contact.sector}\n`;
   if (urgency) msg += `• Urgencia: ${urgency.label} — ${urgency.description}\n`;
+  if (techVisit) msg += `• Visita técnica: ${techVisit.label}\n`;
   msg += `\n¡Gracias! Espero su respuesta.`;
 
   return msg;
@@ -423,6 +425,20 @@ function StepContacto({ cfg, setCfg }: { cfg: WizardConfig; setCfg: (c: WizardCo
           ))}
         </div>
       </div>
+      <div>
+        <SectionLabel>¿Necesitas una visita técnica?</SectionLabel>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {TECH_VISIT_OPTIONS.map((opt) => (
+            <ToggleCard
+              key={opt.id}
+              label={opt.label}
+              description={opt.description}
+              selected={cfg.contact.techVisit === opt.id}
+              onClick={() => set("techVisit", opt.id)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -435,6 +451,7 @@ function StepResumen({ cfg }: { cfg: WizardConfig }) {
   const spaceType = SPACE_TYPES.find((t) => t.id === cfg.spaceType)?.label ?? "";
   const spaceSize = SPACE_SIZES.find((s) => s.id === cfg.spaceSize);
   const urgency   = URGENCY_OPTIONS.find((u) => u.id === cfg.contact.urgency);
+  const techVisit = TECH_VISIT_OPTIONS.find((t) => t.id === cfg.contact.techVisit);
 
   const Row = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
     <div className="flex items-start gap-3 py-3 border-b border-[#1e1e1e] last:border-0">
@@ -480,6 +497,13 @@ function StepResumen({ cfg }: { cfg: WizardConfig }) {
           label="Urgencia"
           value={`${urgency?.label} — ${urgency?.description}`}
         />
+        {techVisit && (
+          <Row
+            icon={<MapPin className="w-4 h-4" />}
+            label="Visita técnica"
+            value={techVisit.label}
+          />
+        )}
       </div>
 
       <div className="bg-[rgba(12,192,223,0.05)] border border-[rgba(12,192,223,0.2)] rounded-2xl p-4 text-sm text-slate-400">
@@ -516,7 +540,7 @@ export default function CotizadorWizard() {
   const canProceed = (): boolean => {
     if (step === 0) return cfg.services.length > 0;
     if (step === 1) return !!cfg.spaceType && !!cfg.spaceSize;
-    if (step === 3) return !!cfg.contact.name.trim() && !!cfg.contact.phone.trim();
+    if (step === 3) return !!cfg.contact.name.trim() && !!cfg.contact.phone.trim() && !!cfg.contact.techVisit;
     return true;
   };
 

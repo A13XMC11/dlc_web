@@ -146,6 +146,12 @@ export const URGENCY_OPTIONS: OptionItem[] = [
   { id: "inmediato", label: "Inmediato", description: "Hoy mismo" },
 ];
 
+export const TECH_VISIT_OPTIONS: OptionItem[] = [
+  { id: "si",       label: "Sí",         description: "Quiero una visita técnica de evaluación" },
+  { id: "no",       label: "No",         description: "Ya tengo claro lo que necesito" },
+  { id: "no-se",    label: "No estoy seguro", description: "Que nos contacten para definirlo" },
+];
+
 // Wizard state type
 export type WizardConfig = {
   services: string[];
@@ -157,7 +163,7 @@ export type WizardConfig = {
   domotica:  { rooms: string; features: string[] };
   incendios: { zones: string; detectors: string[] };
   portones:  { count: string; types: string[] };
-  contact:   { name: string; phone: string; email: string; sector: string; urgency: string };
+  contact:   { name: string; phone: string; email: string; sector: string; urgency: string; techVisit: string };
 };
 
 export const initialConfig: WizardConfig = {
@@ -170,5 +176,5 @@ export const initialConfig: WizardConfig = {
   domotica:  { rooms: "", features: [] },
   incendios: { zones: "", detectors: [] },
   portones:  { count: "", types: [] },
-  contact:   { name: "", phone: "", email: "", sector: "", urgency: "normal" },
+  contact:   { name: "", phone: "", email: "", sector: "", urgency: "normal", techVisit: "" },
 };
