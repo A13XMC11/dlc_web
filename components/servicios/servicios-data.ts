@@ -76,6 +76,7 @@ export const serviciosData: ServiceData[] = [
           "Soluciones completas para detectar y extinguir incendios: sistemas de extinción por rociadores (Sprinklers), equipos de extinción activa y extintores portátiles certificados para fuegos clase A, B, C y K.",
         iconName: "BellRing",
         image: "/images/controlincendio.webp",
+        imagePosition: "10% center",
         features: [
           "Detectores de humo iónico, fotoeléctrico y óptico",
           "Detectores de calor fijo y diferencial certificados",
@@ -665,7 +666,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Puertas cortafuegos certificadas con cerraduras antipánico y cierre automático, cumpliendo normativas de evacuación de emergencia y regulaciones del Cuerpo de Bomberos.",
         iconName: "ShieldCheck",
-        image: "/project-gate.png",
+        image: "/images/puertascortafuego.webp",
         features: [
           "Resistencia al fuego certificada de RF30 hasta RF120 minutos",
           "Cerradura antipánico conforme a normativa NFPA y Bomberos",
@@ -766,7 +767,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Proyectos de instalaciones eléctricas residenciales, comerciales e industriales con diseño de iluminación eficiente LED, planos técnicos y certificación ante el ARCONEL.",
         iconName: "Zap",
-        image: "/images/ingelectrica.webp",
+        image: "/images/iluminacion.webp",
         features: [
           "Diseño de instalaciones eléctricas residenciales, comerciales e industriales",
           "Planos eléctricos con memoria técnica para permisos municipales",
@@ -1141,6 +1142,7 @@ export const serviciosData: ServiceData[] = [
           "Sistemas integrales de detección, alarma y extinción de incendios certificados por el Cuerpo de Bomberos del Ecuador, con detectores de humo, rociadores y paneles inteligentes.",
         iconName: "Flame",
         image: "/images/controlincendio.webp",
+        imagePosition: "10% center",
         features: [
           "Detectores de humo iónico, fotoeléctrico y de calor certificados",
           "Sistemas de extinción por rociadores (Sprinklers) NFPA",
@@ -1173,6 +1175,7 @@ export const serviciosData: ServiceData[] = [
           "Protección perimetral para hogares y comercios: sensores de intrusión, cercos eléctricos, botón de pánico y notificación inmediata al propietario con monitoreo 24/7 opcional.",
         iconName: "Bell",
         image: "/images/alarma.webp",
+        imagePosition: "75% center",
         features: [
           "Sensores de intrusión alámbricos e inalámbricos para puertas y ventanas",
           "Sensores de movimiento PIR de doble tecnología anti-mascotas",
