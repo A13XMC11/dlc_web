@@ -52,52 +52,70 @@ export default function ServiceDetail({ service }: Props) {
         <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-cyan-neon/[0.04] blur-[130px] pointer-events-none rounded-full" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <nav
-            aria-label="Breadcrumb"
-            className="dlc-a1 flex items-center gap-2 text-xs text-slate-500 mb-8 font-sans"
-          >
-            <Link href="/" className="hover:text-brand-cyan transition-colors">Inicio</Link>
-            <span>/</span>
-            <Link href="/servicios" className="hover:text-brand-cyan transition-colors">Servicios</Link>
-            <span>/</span>
-            <span className="text-slate-300">{service.title}</span>
-          </nav>
+          <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
+            <div className="flex-1 min-w-0">
+              <nav
+                aria-label="Breadcrumb"
+                className="dlc-a1 flex items-center gap-2 text-xs text-slate-500 mb-8 font-sans"
+              >
+                <Link href="/" className="hover:text-brand-cyan transition-colors">Inicio</Link>
+                <span>/</span>
+                <Link href="/servicios" className="hover:text-brand-cyan transition-colors">Servicios</Link>
+                <span>/</span>
+                <span className="text-slate-300">{service.title}</span>
+              </nav>
 
-          <p className="dlc-a2 text-brand-cyan font-bold text-xs uppercase tracking-widest mb-3">
-            {service.eyebrow}
-          </p>
+              <p className="dlc-a2 text-brand-cyan font-bold text-xs uppercase tracking-widest mb-3">
+                {service.eyebrow}
+              </p>
 
-          <h1 className="dlc-a3 font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 max-w-3xl">
-            {service.title}
-          </h1>
+              <h1 className="dlc-a3 font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 max-w-3xl">
+                {service.title}
+              </h1>
 
-          <div className="dlc-a4 h-1 w-20 bg-brand-cyan rounded-full mb-8" />
+              <div className="dlc-a4 h-1 w-20 bg-brand-cyan rounded-full mb-8" />
 
-          <p className="dlc-a5 font-sans text-base sm:text-lg text-slate-400 max-w-2xl mb-4 leading-relaxed">
-            {service.description}
-          </p>
+              <p className="dlc-a5 font-sans text-base sm:text-lg text-slate-400 max-w-2xl mb-4 leading-relaxed">
+                {service.description}
+              </p>
 
-          <p className="dlc-a6 font-sans text-sm text-slate-500 max-w-2xl mb-10 leading-relaxed">
-            <span className="text-slate-400 font-semibold">Para quién: </span>
-            {service.targetAudience}
-          </p>
+              <p className="dlc-a6 font-sans text-sm text-slate-500 max-w-2xl mb-10 leading-relaxed">
+                <span className="text-slate-400 font-semibold">Para quién: </span>
+                {service.targetAudience}
+              </p>
 
-          <div className="dlc-a7 flex flex-col sm:flex-row items-start gap-4">
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-cyan hover:bg-brand-cyan-dark active:scale-[0.98] text-white font-bold text-base transition-all duration-300 shadow-[0_0_25px_rgba(8,180,255,0.4)] hover:shadow-[0_0_40px_rgba(8,180,255,0.6)]"
-            >
-              <PhoneCall className="w-5 h-5" />
-              Cotizar este Servicio
-            </a>
-            <Link
-              href="/servicios"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0e4956]/50 hover:bg-[#0e4956]/80 text-white border border-[#2d2d2d] hover:border-brand-cyan/50 transition-all duration-300 font-semibold text-base"
-            >
-              Ver Todos los Servicios
-            </Link>
+              <div className="dlc-a7 flex flex-col sm:flex-row items-start gap-4">
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-cyan hover:bg-brand-cyan-dark active:scale-[0.98] text-white font-bold text-base transition-all duration-300 shadow-[0_0_25px_rgba(8,180,255,0.4)] hover:shadow-[0_0_40px_rgba(8,180,255,0.6)]"
+                >
+                  <PhoneCall className="w-5 h-5" />
+                  Cotizar este Servicio
+                </a>
+                <Link
+                  href="/servicios"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#0e4956]/50 hover:bg-[#0e4956]/80 text-white border border-[#2d2d2d] hover:border-brand-cyan/50 transition-all duration-300 font-semibold text-base"
+                >
+                  Ver Todos los Servicios
+                </Link>
+              </div>
+            </div>
+
+            {service.mainImage && (
+              <div className="hidden lg:block relative w-[420px] h-[340px] flex-shrink-0 rounded-3xl overflow-hidden border border-[#242424]">
+                <Image
+                  src={service.mainImage}
+                  alt={`${service.title} — DLC Tecnológica`}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="420px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/60 via-transparent to-transparent" />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -177,9 +195,8 @@ export default function ServiceDetail({ service }: Props) {
             {service.subcategories.map((sub) => {
               const SubIcon = ICON_MAP[sub.iconName];
               return (
-                <Link
+                <div
                   key={sub.title}
-                  href={`/servicios/${service.slug}/${sub.slug}`}
                   className="relative group flex flex-col bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.5)] hover:shadow-[0_8px_32px_rgba(12,192,223,0.12)] rounded-3xl transition-all duration-300 overflow-hidden h-full"
                 >
                   {sub.image ? (
@@ -199,22 +216,14 @@ export default function ServiceDetail({ service }: Props) {
                           </div>
                         )}
                       </div>
-                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1 text-cyan-neon text-xs font-bold uppercase tracking-widest">
-                        Ver detalle
-                        <ArrowRight size={10} />
-                      </div>
                     </div>
                   ) : (
-                    <div className="p-8 pb-0 flex items-start justify-between mb-2 flex-shrink-0">
+                    <div className="p-8 pb-0 flex items-start mb-2 flex-shrink-0">
                       {SubIcon && (
                         <div className="w-14 h-14 rounded-2xl bg-[#1a1a1a]/80 border border-[#242424] flex items-center justify-center group-hover:border-brand-cyan/40 group-hover:scale-110 transition-all duration-300">
                           <SubIcon size={28} className="text-slate-400 group-hover:text-cyan-neon transition-colors duration-300" />
                         </div>
                       )}
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1 text-cyan-neon text-xs font-bold uppercase tracking-widest mt-3">
-                        Ver detalle
-                        <ArrowRight size={12} />
-                      </span>
                     </div>
                   )}
 
@@ -225,14 +234,17 @@ export default function ServiceDetail({ service }: Props) {
                     <p className="text-slate-400 text-sm leading-relaxed font-sans flex-1 line-clamp-3">
                       {sub.description}
                     </p>
-                    <div className="mt-5 pt-4 border-t border-[#1e1e1e] flex items-center gap-2 text-slate-500 group-hover:text-cyan-neon transition-colors duration-300">
+                    <Link
+                      href={`/servicios/${service.slug}/${sub.slug}`}
+                      className="mt-5 pt-4 border-t border-[#1e1e1e] flex items-center gap-2 text-slate-500 hover:text-cyan-neon transition-colors duration-300"
+                    >
                       <span className="text-xs font-semibold font-sans">Ver todas las características</span>
                       <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
+                    </Link>
                   </div>
 
                   <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-cyan-neon transition-all duration-[400ms] ease-in-out" />
-                </Link>
+                </div>
               );
             })}
           </div>

@@ -31,6 +31,7 @@ type Chip = {
 };
 
 type Section = {
+  anchorId: string;
   eyebrow: string;
   title: string;
   renderSectionIcon: (className: string) => React.ReactNode;
@@ -51,6 +52,7 @@ function getServiceChips(slug: string): Chip[] {
 
 const sections: Section[] = [
   {
+    anchorId: "especialidad-seguridad-electronica",
     eyebrow: "Área Principal",
     title: "Seguridad Electrónica",
     renderSectionIcon: (className) => (
@@ -67,6 +69,7 @@ const sections: Section[] = [
     ],
   },
   {
+    anchorId: "especialidad-portones-automatizacion",
     eyebrow: "Accesos Automatizados",
     title: "Portones y Automatización",
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
@@ -75,6 +78,7 @@ const sections: Section[] = [
     chips: getServiceChips("portones-automatizacion"),
   },
   {
+    anchorId: "especialidad-ingenieria-electrica",
     eyebrow: "Diseño y Construcción Eléctrica",
     title: "Ingeniería Eléctrica",
     renderSectionIcon: (className) => <Zap size={26} className={className} />,
@@ -83,6 +87,7 @@ const sections: Section[] = [
     chips: getServiceChips("ingenieria-electrica"),
   },
   {
+    anchorId: "especialidad-soporte-tecnico",
     eyebrow: "Acompañamiento Continuo",
     title: "Soporte Técnico",
     renderSectionIcon: (className) => <Wrench size={26} className={className} />,
@@ -91,6 +96,7 @@ const sections: Section[] = [
     chips: getServiceChips("soporte-tecnico"),
   },
   {
+    anchorId: "especialidad-software-ti",
     eyebrow: "Soluciones de Software",
     title: "Software y TI",
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
@@ -121,11 +127,12 @@ function ServiceSectionCard({
 
   return (
     <motion.div
+      id={section.anchorId}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: index * 0.08 }}
-      className="mb-5 relative group bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.35)] rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:shadow-[0_12px_60px_rgba(12,192,223,0.1)]"
+      className="mb-5 relative group bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.35)] rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:shadow-[0_12px_60px_rgba(12,192,223,0.1)] scroll-mt-24"
     >
       {/* Subtle inner grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00F0FF04_1px,transparent_1px),linear-gradient(to_bottom,#00F0FF04_1px,transparent_1px)] bg-size-[3rem_3rem] pointer-events-none" />
