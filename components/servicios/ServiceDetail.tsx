@@ -143,27 +143,19 @@ export default function ServiceDetail({ service }: Props) {
             </div>
 
             {/* Image column */}
-            {service.mainImage ? (
-              <div className="relative rounded-3xl overflow-hidden">
-                <div className="relative h-[420px] w-full">
-                  <Image
-                    src={service.mainImage}
-                    alt={`${service.title} — DLC Tecnológica Ecuador`}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/60 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/20 to-transparent" />
-                </div>
-                <div className="absolute inset-0 rounded-3xl ring-1 ring-cyan-neon/10 pointer-events-none" />
+            <div className="relative flex items-center justify-center h-[420px]">
+              <div className="relative h-full w-full">
+                <Image
+                  src="/logo-dlctec-symbol.png"
+                  alt={`Escudo DLCtec — ${service.title}`}
+                  fill
+                  priority
+                  className="object-contain drop-shadow-[0_0_50px_rgba(12,192,223,0.3)]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            ) : (
-              <div className="h-[420px] rounded-3xl bg-[#0e4956] border border-[#242424] flex items-center justify-center">
-                <p className="text-slate-600 text-sm font-sans">Imagen próximamente</p>
-              </div>
-            )}
+            </div>
+
           </div>
         </div>
       </section>

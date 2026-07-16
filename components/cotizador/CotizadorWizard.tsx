@@ -29,6 +29,8 @@ function toggleArr(arr: string[], id: string): string[] {
   return arr.includes(id) ? arr.filter((x) => x !== id) : [...arr, id];
 }
 
+const DIVIDER = "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈";
+
 function buildWhatsAppMessage(cfg: WizardConfig): string {
   const svcLabels = SERVICE_OPTIONS
     .filter((s) => cfg.services.includes(s.id))
@@ -40,65 +42,67 @@ function buildWhatsAppMessage(cfg: WizardConfig): string {
   const urgency = URGENCY_OPTIONS.find((u) => u.id === cfg.contact.urgency);
   const techVisit = TECH_VISIT_OPTIONS.find((t) => t.id === cfg.contact.techVisit);
 
-  let msg = `Hola DLC Tecnológica 👋\nSolicito cotización personalizada:\n`;
-  msg += `\n🔧 *SERVICIOS REQUERIDOS:*\n${svcLabels.map((l) => `• ${l}`).join("\n")}\n`;
-  msg += `\n🏢 *ESPACIO:* ${spaceType} · ${spaceSize} (${spaceSizeDesc})\n`;
+  let msg = `🚀 *NUEVA SOLICITUD DE COTIZACIÓN*\n_Recibida desde el cotizador web de DLC Tecnológica_\n${DIVIDER}\n`;
+
+  msg += `\n🔧 *SERVICIOS REQUERIDOS*\n${svcLabels.map((l) => `✅ ${l}`).join("\n")}\n`;
+  msg += `\n🏢 *ESPACIO A INTERVENIR*\n▫️ Tipo: ${spaceType}\n▫️ Tamaño: ${spaceSize} (${spaceSizeDesc})\n`;
 
   if (cfg.services.includes("cctv")) {
-    msg += `\n📹 *VIDEOVIGILANCIA CCTV:*\n`;
-    if (cfg.cctv.count) msg += `• Cantidad: ${cfg.cctv.count}\n`;
+    msg += `\n${DIVIDER}\n📹 *VIDEOVIGILANCIA CCTV*\n`;
+    if (cfg.cctv.count) msg += `▫️ Cantidad de cámaras: ${cfg.cctv.count}\n`;
     if (cfg.cctv.types.length)
-      msg += `• Tipos: ${CCTV_TYPES.filter((t) => cfg.cctv.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
+      msg += `▫️ Tipos: ${CCTV_TYPES.filter((t) => cfg.cctv.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
     if (cfg.cctv.storage)
-      msg += `• Almacenamiento: ${CCTV_STORAGE.find((s) => s.id === cfg.cctv.storage)?.label}\n`;
+      msg += `▫️ Almacenamiento: ${CCTV_STORAGE.find((s) => s.id === cfg.cctv.storage)?.label}\n`;
   }
 
   if (cfg.services.includes("accesos")) {
-    msg += `\n🚪 *CONTROL DE ACCESOS:*\n`;
-    if (cfg.accesos.doors) msg += `• Accesos: ${cfg.accesos.doors}\n`;
+    msg += `\n${DIVIDER}\n🚪 *CONTROL DE ACCESOS*\n`;
+    if (cfg.accesos.doors) msg += `▫️ Accesos: ${cfg.accesos.doors}\n`;
     if (cfg.accesos.types.length)
-      msg += `• Tecnología: ${ACCESS_TYPES.filter((t) => cfg.accesos.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
+      msg += `▫️ Tecnología: ${ACCESS_TYPES.filter((t) => cfg.accesos.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
   }
 
   if (cfg.services.includes("alarmas")) {
-    msg += `\n🔔 *ALARMAS DE SEGURIDAD:*\n`;
-    if (cfg.alarmas.zones) msg += `• Zonas: ${cfg.alarmas.zones}\n`;
+    msg += `\n${DIVIDER}\n🔔 *ALARMAS DE SEGURIDAD*\n`;
+    if (cfg.alarmas.zones) msg += `▫️ Zonas: ${cfg.alarmas.zones}\n`;
     if (cfg.alarmas.sensors.length)
-      msg += `• Sensores: ${ALARM_SENSORS.filter((s) => cfg.alarmas.sensors.includes(s.id)).map((s) => s.label).join(", ")}\n`;
+      msg += `▫️ Sensores: ${ALARM_SENSORS.filter((s) => cfg.alarmas.sensors.includes(s.id)).map((s) => s.label).join(", ")}\n`;
   }
 
   if (cfg.services.includes("domotica")) {
-    msg += `\n🏠 *DOMÓTICA:*\n`;
-    if (cfg.domotica.rooms) msg += `• Ambientes: ${cfg.domotica.rooms}\n`;
+    msg += `\n${DIVIDER}\n🏠 *DOMÓTICA*\n`;
+    if (cfg.domotica.rooms) msg += `▫️ Ambientes: ${cfg.domotica.rooms}\n`;
     if (cfg.domotica.features.length)
-      msg += `• Funciones: ${DOMOTICA_FEATURES.filter((f) => cfg.domotica.features.includes(f.id)).map((f) => f.label).join(", ")}\n`;
+      msg += `▫️ Funciones: ${DOMOTICA_FEATURES.filter((f) => cfg.domotica.features.includes(f.id)).map((f) => f.label).join(", ")}\n`;
   }
 
   if (cfg.services.includes("incendios")) {
-    msg += `\n🔥 *CONTROL DE INCENDIOS:*\n`;
-    if (cfg.incendios.zones) msg += `• Zonas: ${cfg.incendios.zones}\n`;
+    msg += `\n${DIVIDER}\n🔥 *CONTROL DE INCENDIOS*\n`;
+    if (cfg.incendios.zones) msg += `▫️ Zonas: ${cfg.incendios.zones}\n`;
     if (cfg.incendios.detectors.length)
-      msg += `• Detectores: ${FIRE_DETECTORS.filter((d) => cfg.incendios.detectors.includes(d.id)).map((d) => d.label).join(", ")}\n`;
+      msg += `▫️ Detectores: ${FIRE_DETECTORS.filter((d) => cfg.incendios.detectors.includes(d.id)).map((d) => d.label).join(", ")}\n`;
   }
 
   if (cfg.services.includes("portones")) {
-    msg += `\n🚧 *PORTONES / AUTOMATIZACIÓN:*\n`;
-    if (cfg.portones.count) msg += `• Cantidad: ${cfg.portones.count}\n`;
+    msg += `\n${DIVIDER}\n🚧 *PORTONES / AUTOMATIZACIÓN*\n`;
+    if (cfg.portones.count) msg += `▫️ Cantidad: ${cfg.portones.count}\n`;
     if (cfg.portones.types.length)
-      msg += `• Tipos: ${GATE_TYPES.filter((t) => cfg.portones.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
+      msg += `▫️ Tipos: ${GATE_TYPES.filter((t) => cfg.portones.types.includes(t.id)).map((t) => t.label).join(", ")}\n`;
   }
 
-  if (cfg.services.includes("electrica")) msg += `\n⚡ *INGENIERÍA ELÉCTRICA:* Requiero cotización\n`;
-  if (cfg.services.includes("soporte"))   msg += `\n💻 *SOPORTE TÉCNICO / TI:* Requiero cotización\n`;
+  if (cfg.services.includes("electrica")) msg += `\n${DIVIDER}\n⚡ *INGENIERÍA ELÉCTRICA*\n▫️ Requiere cotización general\n`;
+  if (cfg.services.includes("soporte"))   msg += `\n${DIVIDER}\n💻 *SOPORTE TÉCNICO / TI*\n▫️ Requiere cotización general\n`;
 
-  msg += `\n👤 *MIS DATOS:*\n`;
-  msg += `• Nombre: ${cfg.contact.name}\n`;
-  msg += `• Teléfono: ${cfg.contact.phone}\n`;
-  if (cfg.contact.email)  msg += `• Email: ${cfg.contact.email}\n`;
-  if (cfg.contact.sector) msg += `• Sector / Dirección: ${cfg.contact.sector}\n`;
-  if (urgency) msg += `• Urgencia: ${urgency.label} — ${urgency.description}\n`;
-  if (techVisit) msg += `• Visita técnica: ${techVisit.label}\n`;
-  msg += `\n¡Gracias! Espero su respuesta.`;
+  msg += `\n${DIVIDER}\n👤 *DATOS DE CONTACTO*\n`;
+  msg += `▫️ Nombre: *${cfg.contact.name}*\n`;
+  msg += `▫️ Teléfono: *${cfg.contact.phone}*\n`;
+  if (cfg.contact.email)  msg += `▫️ Email: ${cfg.contact.email}\n`;
+  if (cfg.contact.sector) msg += `▫️ Sector / Dirección: ${cfg.contact.sector}\n`;
+  if (urgency) msg += `\n⏱️ *URGENCIA:* ${urgency.label} — ${urgency.description}\n`;
+  if (techVisit) msg += `📍 *VISITA TÉCNICA:* ${techVisit.label}\n`;
+
+  msg += `\n${DIVIDER}\n🙏 ¡Gracias! Quedo atento(a) a la cotización. 😊`;
 
   return msg;
 }

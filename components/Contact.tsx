@@ -1,39 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageSquarePlus, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, SlidersHorizontal, ArrowUpRight, Clock, CheckCircle2 } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 
+const COTIZADOR_HIGHLIGHTS = [
+  "Elige solo los servicios que necesitas",
+  "Configura los detalles paso a paso",
+  "Recibe tu propuesta directo por WhatsApp",
+];
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "Seguridad Electrónica",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setIsSubmitting(false);
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-      setFormData({ name: "", email: "", phone: "", service: "Seguridad Electrónica", message: "" });
-    }, 4000);
-  };
-
   return (
     <section id="contacto" className="relative py-24 bg-[#01313f] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -63,7 +41,7 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
-          {/* ── LEFT: Contact Form ── */}
+          {/* ── LEFT: Cotizador CTA ── */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,93 +49,38 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-7"
           >
-            <div className="relative overflow-hidden group bg-[#0e4956] border border-[#242424] hover:border-[rgba(12,192,223,0.4)] hover:shadow-[0_8px_32px_rgba(12,192,223,0.08)] p-8 sm:p-10 rounded-3xl h-full transition-all duration-300 ease-in-out">
+            <div className="relative overflow-hidden group bg-[#0e4956] border border-[#242424] hover:border-[rgba(12,192,223,0.4)] hover:shadow-[0_8px_32px_rgba(12,192,223,0.08)] p-8 sm:p-10 rounded-3xl h-full transition-all duration-300 ease-in-out flex flex-col justify-center">
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-cyan-neon rounded-b-3xl transition-all duration-[400ms] ease-in-out" />
 
-              <h3 className="text-xl font-bold text-white mb-6 font-sans flex items-center gap-2">
-                <MessageSquarePlus className="w-5 h-5 text-[#0cc0df]" />
-                <span>Enviar un mensaje</span>
+              <div className="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-6">
+                <SlidersHorizontal className="w-7 h-7" />
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 font-sans">
+                Arma tu Cotización a tu Medida
               </h3>
+              <p className="text-sm sm:text-base text-slate-400 mb-6 max-w-md">
+                Configura exactamente los servicios que necesitas en nuestro cotizador interactivo
+                y recibe una propuesta personalizada en minutos, directo a nuestro WhatsApp.
+              </p>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-xs font-semibold text-[#94a3b8]">Nombre Completo *</label>
-                    <input
-                      type="text" id="name" name="name" required
-                      value={formData.name} onChange={handleChange}
-                      placeholder="Ej. Juan Pérez"
-                      className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl px-4 py-3 text-sm text-white focus:border-[#0cc0df] focus:ring-1 focus:ring-[#0cc0df] outline-none transition-all placeholder:text-[#4b5563]"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="phone" className="text-xs font-semibold text-[#94a3b8]">Teléfono / WhatsApp</label>
-                    <input
-                      type="tel" id="phone" name="phone"
-                      value={formData.phone} onChange={handleChange}
-                      placeholder="Ej. 099000000"
-                      className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl px-4 py-3 text-sm text-white focus:border-[#0cc0df] focus:ring-1 focus:ring-[#0cc0df] outline-none transition-all placeholder:text-[#4b5563]"
-                    />
-                  </div>
-                </div>
+              <ul className="flex flex-col gap-3 mb-8">
+                {COTIZADOR_HIGHLIGHTS.map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-brand-cyan flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-xs font-semibold text-[#94a3b8]">Correo Electrónico *</label>
-                  <input
-                    type="email" id="email" name="email" required
-                    value={formData.email} onChange={handleChange}
-                    placeholder="correo@ejemplo.com"
-                    className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl px-4 py-3 text-sm text-white focus:border-[#0cc0df] focus:ring-1 focus:ring-[#0cc0df] outline-none transition-all placeholder:text-[#4b5563]"
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="service" className="text-xs font-semibold text-[#94a3b8]">Servicio de Interés</label>
-                  <select
-                    id="service" name="service"
-                    value={formData.service} onChange={handleChange}
-                    className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl px-4 py-3 text-sm text-white focus:border-[#0cc0df] focus:ring-1 focus:ring-[#0cc0df] outline-none transition-all"
-                  >
-                    <option value="Seguridad Electrónica">Seguridad Electrónica (CCTV, Alarmas)</option>
-                    <option value="Puertas y Automatismos">Puertas Automáticas y Motores</option>
-                    <option value="Redes & Cableado">Redes Estructuradas e Internet</option>
-                    <option value="Smart Home">Smart Home y Domótica</option>
-                    <option value="Computación TI">Computación y Soporte de TI</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-xs font-semibold text-[#94a3b8]">Detalles del Proyecto *</label>
-                  <textarea
-                    id="message" name="message" required rows={4}
-                    value={formData.message} onChange={handleChange}
-                    placeholder="Cuéntanos qué necesitas automatizar, asegurar o instalar..."
-                    className="bg-[#1e1e1e] border border-[#2a2a2a] rounded-xl px-4 py-3 text-sm text-white focus:border-[#0cc0df] focus:ring-1 focus:ring-[#0cc0df] outline-none transition-all placeholder:text-[#4b5563] resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting || success}
-                  className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
-                    success
-                      ? "bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-                      : "bg-brand-cyan hover:bg-brand-cyan-dark text-white hover:scale-[1.01] hover:shadow-[0_4px_20px_rgba(8,180,255,0.35)]"
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : success ? (
-                    <span>¡Mensaje Enviado con Éxito!</span>
-                  ) : (
-                    <>
-                      <span>Enviar Solicitud</span>
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              </form>
+              <Link
+                href="/cotizador"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-fit bg-brand-cyan hover:bg-brand-cyan-dark text-white font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_32px_rgba(8,180,255,0.4)]"
+              >
+                Iniciar Cotización
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
 
