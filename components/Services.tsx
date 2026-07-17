@@ -75,7 +75,11 @@ const sections: Section[] = [
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
     allHref: "/servicios/portones-automatizacion",
     allLabel: "Ver servicio",
-    chips: getServiceChips("portones-automatizacion"),
+    chips: [
+      { title: "Puertas de Acceso Vehicular", href: "/servicios/portones-automatizacion/puertas-vehiculares", Icon: Move        },
+      { title: "Puertas Cortafuegos",         href: "/servicios/portones-automatizacion/puertas-cortafuegos", Icon: ShieldCheck },
+      { title: "Estructuras Metálicas",       href: "/servicios/portones-automatizacion/estructuras-metalicas", Icon: Layers    },
+    ],
   },
   {
     anchorId: "especialidad-ingenieria-electrica",
@@ -84,7 +88,12 @@ const sections: Section[] = [
     renderSectionIcon: (className) => <Zap size={26} className={className} />,
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
-    chips: getServiceChips("ingenieria-electrica"),
+    chips: [
+      { title: "Diseño Eléctrico e Iluminación", href: "/servicios/ingenieria-electrica/diseno-electrico",    Icon: Zap        },
+      { title: "Redes de Voz y Datos",           href: "/servicios/ingenieria-electrica/redes-voz-datos",    Icon: Network    },
+      { title: "Tableros Eléctricos",             href: "/servicios/ingenieria-electrica/tableros-electricos", Icon: LayoutGrid },
+      { title: "Fibra Óptica",                    href: "/servicios/ingenieria-electrica/fibra-optica",       Icon: Cpu        },
+    ],
   },
   {
     anchorId: "especialidad-soporte-tecnico",
@@ -102,7 +111,13 @@ const sections: Section[] = [
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
     allHref: "/servicios/software-ti",
     allLabel: "Ver servicio",
-    chips: getServiceChips("software-ti"),
+    chips: [
+      { title: "Desarrollo de Software Especializado", href: "/servicios/software-ti/desarrollo-software",   Icon: Code2     },
+      { title: "Integraciones con RFID",                href: "/servicios/software-ti/integraciones-rfid",   Icon: Radio     },
+      { title: "Control de Personal",                   href: "/servicios/software-ti/control-personal",     Icon: Users     },
+      { title: "Control de Visitas",                    href: "/servicios/software-ti/control-visitas",      Icon: UserCheck },
+      { title: "Control de Accesos",                    href: "/servicios/software-ti/control-accesos-sw",   Icon: Lock      },
+    ],
   },
 ];
 

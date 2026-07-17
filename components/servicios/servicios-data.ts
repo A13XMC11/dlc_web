@@ -399,7 +399,7 @@ export const serviciosData: ServiceData[] = [
       { value: "12h", label: "Batería de respaldo" },
       { value: "10", label: "Contactos de alerta" },
     ],
-    mainImage: "/images/seguridad.webp",
+    mainImage: "/images/alarma.webp",
     subcategories: [
       {
         slug: "alarmas-robos",
@@ -785,7 +785,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Infraestructura de conectividad interna: redes inalámbricas WiFi empresarial, enlaces punto a punto y cableado estructurado categoría 6A certificado.",
         iconName: "Network",
-        image: "/images/services/redes-voz-datos.jpg",
+        image: "/images/vozydatos.webp",
         features: [
           "Cableado estructurado Cat 6A certificado con equipos FLUKE",
           "Redes WiFi 6 empresarial de alta densidad y baja latencia",
@@ -803,7 +803,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Montaje y certificación de tableros de distribución residencial e industrial, transferencias automáticas (ATS) y tableros de control con protecciones termomagnéticas y diferenciales.",
         iconName: "LayoutGrid",
-        image: "/images/services/tableros-electricos.jpg",
+        image: "/images/tableros.webp",
         features: [
           "Tableros de distribución residencial e industrial a medida",
           "Transferencias automáticas (ATS) para generadores de emergencia",
@@ -821,7 +821,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Tendido, fusión y certificación de fibra óptica monomodo y multimodo para enlaces de alta capacidad y baja latencia entre edificios o dentro de instalaciones industriales.",
         iconName: "Cpu",
-        image: "/images/services/fibra-optica.jpg",
+        image: "/images/fibraoptica.webp",
         features: [
           "Fibra monomodo (OS2) y multimodo (OM3/OM4) según requerimiento",
           "Fusión de empalmes con fusionadora de arco eléctrico de alta precisión",
@@ -1005,7 +1005,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Desarrollo de módulos de integración entre sistemas RFID y plataformas ERP/CRM para automatización de registros de asistencia, inventario y trazabilidad de activos.",
         iconName: "Radio",
-        image: "/images/services/integracion-rfid.jpg",
+        image: "/images/rfid.webp",
         features: [
           "Módulos de integración RFID para plataformas ERP y CRM existentes",
           "Automatización del registro de asistencia sin intervención manual",
@@ -1023,7 +1023,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Software de gestión de horarios, asistencia y registros del personal, integrado con biometría y control de acceso físico. Exportación automática a sistemas de nómina.",
         iconName: "Users",
-        image: "/images/services/control-personal.jpg",
+        image: "/images/controlpersonal.webp",
         features: [
           "Gestión completa de horarios, turnos y calendarios del personal",
           "Registro biométrico de asistencia por huella dactilar o reconocimiento facial",
@@ -1041,7 +1041,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistema digital de registro de visitantes con pre-autorización por correo, captura de foto, impresión de credenciales temporales y reportes de concurrencia en tiempo real.",
         iconName: "UserCheck",
-        image: "/images/services/control-visitas.jpg",
+        image: "/images/controlvisitas.webp",
         features: [
           "Registro digital de visitantes con foto y captura de documento",
           "Pre-autorización de visitas enviada por correo electrónico al anfitrión",
@@ -1059,7 +1059,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Plataforma de administración de permisos, grupos de acceso, horarios y zonas restringidas con trazabilidad completa de todos los eventos de entrada y salida.",
         iconName: "Lock",
-        image: "/images/services/control-accesos-software.jpg",
+        image: "/images/controacceso2.webp",
         features: [
           "Panel web de administración multi-sede accesible desde cualquier lugar",
           "Gestión granular de permisos por zona, horario y grupo de usuarios",

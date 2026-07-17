@@ -153,11 +153,6 @@ export default function SubcategoryDetail({ service, subcategory }: Props) {
                   sizes="320px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/70 via-transparent to-transparent" />
-                {SubIcon && (
-                  <div className="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-[#0f0f0f]/80 border border-[#2a2a2a] flex items-center justify-center backdrop-blur-sm">
-                    <SubIcon size={22} className="text-cyan-neon" />
-                  </div>
-                )}
               </motion.div>
             ) : (
               SubIcon && (
