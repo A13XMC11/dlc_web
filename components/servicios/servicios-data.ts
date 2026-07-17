@@ -511,7 +511,7 @@ export const serviciosData: ServiceData[] = [
           "Cámaras WiFi de interior y exterior con instalación ágil, grabación en la nube y acceso remoto desde cualquier smartphone. Sin obras, sin cableado complejo.",
         iconName: "Wifi",
         image: "/images/inalambrica.webp",
-        imagePosition: "80% center",
+        imagePosition: "center 70%",
         features: [
           "Conectividad WiFi dual band 2.4/5GHz de alta estabilidad",
           "Resolución 2K-4K con lente gran angular de 120°",
@@ -547,7 +547,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Cámaras con chip 4G/LTE integrado para zonas sin internet o electricidad permanente. Funcionan con batería de respaldo autónoma. Alertas por movimiento y acceso remoto en tiempo real.",
         iconName: "Signal",
-        image: "/images/chipcamara.webp",
+        image: "/images/gsm.webp",
         features: [
           "Chip 4G/LTE integrado: no requiere internet fijo ni cableado",
           "Panel solar o batería autónoma de larga duración recargable",
