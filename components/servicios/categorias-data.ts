@@ -3,6 +3,7 @@ export type CategoriaIndexCard = {
   title: string;
   description: string;
   iconName: string;
+  headerImage?: string;
   href: string;
   cardCount: number;
   cardCountLabel: string;
@@ -58,6 +59,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Protección integral para hogares, comercios e industrias: detección de incendios, control de accesos, alarmas perimetrales y videovigilancia CCTV en Quito y Ecuador.",
     iconName: "ShieldCheck",
+    headerImage: "/seguridad-electrica.png",
     href: "/servicios/seguridad-electronica",
     cardCount: 4,
     cardCountLabel: "especialidades de seguridad",
@@ -78,6 +80,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Fabricamos e instalamos portones automáticos, puertas industriales y estructuras metálicas a medida para residencias, condominios y empresas en Ecuador.",
     iconName: "DoorOpen",
+    headerImage: "/portones-automaticos.png",
     href: "/servicios/portones-automatizacion",
     cardCount: 3,
     cardCountLabel: "soluciones disponibles",
@@ -88,6 +91,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Ejecutamos proyectos de ingeniería eléctrica: diseño de instalaciones, redes de voz y datos, tableros eléctricos y fibra óptica para proyectos de cualquier escala.",
     iconName: "Zap",
+    headerImage: "/ing-electrico.png",
     href: "/servicios/ingenieria-electrica",
     cardCount: 4,
     cardCountLabel: "soluciones disponibles",
@@ -98,6 +102,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Desarrollamos software a medida e integraciones tecnológicas para control de accesos, gestión de personal y visitas, con integración RFID y biometría.",
     iconName: "Code2",
+    headerImage: "/computers.png",
     href: "/servicios/software-ti",
     cardCount: 5,
     cardCountLabel: "soluciones disponibles",
@@ -108,6 +113,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Mantenimiento preventivo y correctivo de todos los sistemas instalados por DLC Tecnológica, con SLAs garantizados y soporte remoto sin necesidad de desplazamiento.",
     iconName: "Wrench",
+    headerImage: "/servicio-tecnico.png",
     href: "/servicios/soporte-tecnico",
     cardCount: 1,
     cardCountLabel: "soluciones disponibles",

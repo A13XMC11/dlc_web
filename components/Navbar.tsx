@@ -9,7 +9,7 @@ import Image from "next/image";
 const navLinks = [
   { name: "Inicio",        href: "#inicio" },
   { name: "Sobre Nosotros", href: "#nosotros" },
-  { name: "Servicios",     href: "#servicios" },
+  { name: "Servicios",     href: "/servicios" },
   { name: "Estadísticas",  href: "#estadisticas" },
   { name: "Proyectos",     href: "#proyectos" },
   { name: "Testimonios",   href: "#testimonios" },
@@ -30,7 +30,9 @@ export default function Navbar() {
 
   // Scrollspy via IntersectionObserver
   useEffect(() => {
-    const sectionIds = navLinks.map((l) => l.href.slice(1));
+    const sectionIds = navLinks
+      .filter((l) => l.href.startsWith("#"))
+      .map((l) => l.href.slice(1));
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -59,6 +61,11 @@ export default function Navbar() {
 
   // Smooth scroll + immediate active state on click
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      setIsOpen(false);
+      return;
+    }
+
     e.preventDefault();
     const sectionId = href.slice(1);
 
@@ -102,9 +109,9 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
+              const isActive = link.href.startsWith("#") && activeSection === link.href.slice(1);
               return (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollToSection(e, link.href)}
@@ -121,7 +128,7 @@ export default function Navbar() {
                         : "w-0 bg-brand-cyan/50 group-hover:w-full"
                     }`}
                   />
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -171,9 +178,9 @@ export default function Navbar() {
           >
             <div className="flex flex-col mt-20 gap-2">
               {navLinks.map((link) => {
-                const isActive = activeSection === link.href.slice(1);
+                const isActive = link.href.startsWith("#") && activeSection === link.href.slice(1);
                 return (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleScrollToSection(e, link.href)}
@@ -184,7 +191,7 @@ export default function Navbar() {
                     }`}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

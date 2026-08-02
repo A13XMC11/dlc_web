@@ -34,6 +34,7 @@ type Section = {
   eyebrow: string;
   title: string;
   renderSectionIcon: (className: string) => React.ReactNode;
+  headerImage?: string;
   allHref: string;
   allLabel: string;
   chips: Chip[];
@@ -56,6 +57,7 @@ const sections: Section[] = [
     renderSectionIcon: (className) => (
       <MdOutlineSecurity size={34} className={className} />
     ),
+    headerImage: "/seguridad-electrica.png",
     allHref: "/servicios/seguridad-electronica",
     allLabel: "Ver servicio",
     chips: [
@@ -70,6 +72,7 @@ const sections: Section[] = [
     eyebrow: "Accesos Automatizados",
     title: "Portones y Automatización",
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
+    headerImage: "/portones-automaticos.png",
     allHref: "/servicios/portones-automatizacion",
     allLabel: "Ver servicio",
     chips: getServiceChips("portones-automatizacion"),
@@ -78,6 +81,7 @@ const sections: Section[] = [
     eyebrow: "Diseño y Construcción Eléctrica",
     title: "Ingeniería Eléctrica",
     renderSectionIcon: (className) => <Zap size={26} className={className} />,
+    headerImage: "/ing-electrico.png",
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
     chips: getServiceChips("ingenieria-electrica"),
@@ -86,6 +90,7 @@ const sections: Section[] = [
     eyebrow: "Acompañamiento Continuo",
     title: "Soporte Técnico",
     renderSectionIcon: (className) => <Wrench size={26} className={className} />,
+    headerImage: "/servicio-tecnico.png",
     allHref: "/servicios/soporte-tecnico",
     allLabel: "Ver servicio",
     chips: getServiceChips("soporte-tecnico"),
@@ -94,6 +99,7 @@ const sections: Section[] = [
     eyebrow: "Soluciones de Software",
     title: "Software y TI",
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
+    headerImage: "/computers.png",
     allHref: "/servicios/software-ti",
     allLabel: "Ver servicio",
     chips: getServiceChips("software-ti"),
@@ -138,19 +144,33 @@ function ServiceSectionCard({
         {/* Card header */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-[#1a1a1a]/80 border border-[#242424] group-hover:border-cyan-neon/30 group-hover:shadow-[0_0_24px_rgba(12,192,223,0.2)] flex items-center justify-center transition-all duration-300 shrink-0">
-              {section.renderSectionIcon(
-                "text-slate-400 group-hover:text-cyan-neon transition-colors duration-300"
-              )}
-            </div>
-            <div>
-              <p className="text-brand-cyan font-bold text-[10px] uppercase tracking-widest mb-1">
-                {section.eyebrow}
-              </p>
-              <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-white group-hover:text-cyan-neon transition-colors duration-300 leading-tight">
-                {section.title}
-              </h3>
-            </div>
+            {section.headerImage ? (
+              <div className="relative h-12 sm:h-16" style={{ width: "10rem" }}>
+                <Image
+                  src={section.headerImage}
+                  alt={section.title}
+                  fill
+                  sizes="220px"
+                  className="object-contain object-left"
+                />
+              </div>
+            ) : (
+              <>
+                <div className="w-16 h-16 rounded-2xl bg-[#1a1a1a]/80 border border-[#242424] group-hover:border-cyan-neon/30 group-hover:shadow-[0_0_24px_rgba(12,192,223,0.2)] flex items-center justify-center transition-all duration-300 shrink-0">
+                  {section.renderSectionIcon(
+                    "text-slate-400 group-hover:text-cyan-neon transition-colors duration-300"
+                  )}
+                </div>
+                <div>
+                  <p className="text-brand-cyan font-bold text-[10px] uppercase tracking-widest mb-1">
+                    {section.eyebrow}
+                  </p>
+                  <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-white group-hover:text-cyan-neon transition-colors duration-300 leading-tight">
+                    {section.title}
+                  </h3>
+                </div>
+              </>
+            )}
           </div>
           <Link
             href={section.allHref}

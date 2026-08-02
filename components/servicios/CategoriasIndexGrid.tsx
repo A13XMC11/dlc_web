@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ShieldCheck, Home, DoorOpen, Zap, Code2, Wrench,
@@ -32,21 +33,35 @@ export default function CategoriasIndexGrid() {
             >
               {/* Top row: icon + arrow */}
               <div className="flex items-start justify-between mb-7">
-                <div className="w-[72px] h-[72px] rounded-2xl bg-[#1a1a1a]/80 border border-[#242424] flex items-center justify-center group-hover:border-brand-cyan/40 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(12,192,223,0.2)] transition-all duration-300 ease-out">
-                  {IndexIcon && (
-                    <IndexIcon
-                      size={36}
-                      className="text-slate-400 group-hover:text-cyan-neon transition-colors duration-300"
-                    />
-                  )}
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-slate-600 group-hover:text-cyan-neon group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-[1.15] transition-all duration-200 ease-in-out mt-1" />
+                {!categoria.headerImage && (
+                  <div className="w-[72px] h-[72px] rounded-2xl bg-[#1a1a1a]/80 border border-[#242424] flex items-center justify-center group-hover:border-brand-cyan/40 group-hover:scale-110 group-hover:shadow-[0_0_24px_rgba(12,192,223,0.2)] transition-all duration-300 ease-out">
+                    {IndexIcon && (
+                      <IndexIcon
+                        size={36}
+                        className="text-slate-400 group-hover:text-cyan-neon transition-colors duration-300"
+                      />
+                    )}
+                  </div>
+                )}
+                <ArrowUpRight className="w-5 h-5 text-slate-600 group-hover:text-cyan-neon group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-[1.15] transition-all duration-200 ease-in-out mt-1 ml-auto" />
               </div>
 
               {/* Title */}
-              <h3 className="font-sans text-xl font-bold text-white mb-3 tracking-tight group-hover:text-cyan-neon transition-colors duration-300">
-                {categoria.title}
-              </h3>
+              {categoria.headerImage ? (
+                <div className="relative h-10 w-full mb-3">
+                  <Image
+                    src={categoria.headerImage}
+                    alt={categoria.title}
+                    fill
+                    sizes="200px"
+                    className="object-contain object-center"
+                  />
+                </div>
+              ) : (
+                <h3 className="font-sans text-xl font-bold text-white mb-3 tracking-tight group-hover:text-cyan-neon transition-colors duration-300">
+                  {categoria.title}
+                </h3>
+              )}
 
               {/* Description */}
               <p className="text-slate-400 text-sm leading-relaxed font-sans flex-1">
