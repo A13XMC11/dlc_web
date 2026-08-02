@@ -5,6 +5,8 @@ export type Subcategory = {
   iconName: string;
   features: string[];
   image?: string;
+  /** CSS object-position for the square hero thumbnail, e.g. "15% center". Defaults to "center". */
+  imagePosition?: string;
 };
 
 export type ServiceHighlight = {
@@ -65,7 +67,7 @@ export const serviciosData: ServiceData[] = [
       { value: "100%", label: "Cumplimiento Bomberos" },
       { value: "24h", label: "Soporte post-instalación" },
     ],
-    mainImage: "/images/services-bg-1.jpg",
+    mainImage: "/images/controlincendio.webp",
     subcategories: [
       {
         slug: "deteccion-alarmas-extintores",
@@ -73,7 +75,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Soluciones completas para detectar y extinguir incendios: sistemas de extinción por rociadores (Sprinklers), equipos de extinción activa y extintores portátiles certificados para fuegos clase A, B, C y K.",
         iconName: "BellRing",
-        image: "/images/services-bg-1.jpg",
+        image: "/images/controlincendio.webp",
+        imagePosition: "10% center",
         features: [
           "Detectores de humo iónico, fotoeléctrico y óptico",
           "Detectores de calor fijo y diferencial certificados",
@@ -153,7 +156,7 @@ export const serviciosData: ServiceData[] = [
       { value: "100k+", label: "Usuarios registrados" },
       { value: "5", label: "Tipos de credencial" },
     ],
-    mainImage: "/dlc-image-1.jpg",
+    mainImage: "/images/controlacceso.webp",
     subcategories: [
       {
         slug: "acceso-masivo",
@@ -161,7 +164,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistemas diseñados para universidades, colegios y entidades con alta concurrencia (ej. UDLA), integrando lectores múltiples y gestión centralizada de usuarios.",
         iconName: "Users",
-        image: "/dlc-image-1.jpg",
+        image: "/images/controlacceso.webp",
         features: [
           "Lectores biométricos: huella dactilar, facial y tarjeta RFID",
           "Gestión centralizada de hasta 100,000+ usuarios registrados",
@@ -313,7 +316,7 @@ export const serviciosData: ServiceData[] = [
       { value: "3", label: "Ecosistemas integrados" },
       { value: "1 día", label: "Instalación inicial" },
     ],
-    mainImage: "/images/dlc-smarthome.png",
+    mainImage: "/images/domotica-index.webp",
     subcategories: [
       {
         slug: "automatizacion-inmobiliaria",
@@ -321,7 +324,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Control inteligente de todo el hogar: luces compatibles con Alexa y Google Home, cortinas motorizadas, bombas de piscinas automatizadas y control integral de toda la propiedad desde una sola aplicación.",
         iconName: "Home",
-        image: "/images/dlc-smarthome.png",
+        image: "/images/domotica-index.webp",
         features: [
           "Control de iluminación compatible con Amazon Alexa y Google Home",
           "Cortinas y persianas motorizadas controladas por app o voz",
@@ -396,7 +399,7 @@ export const serviciosData: ServiceData[] = [
       { value: "12h", label: "Batería de respaldo" },
       { value: "10", label: "Contactos de alerta" },
     ],
-    mainImage: "/images/dlc-seguridad.jpg",
+    mainImage: "/images/alarma.webp",
     subcategories: [
       {
         slug: "alarmas-robos",
@@ -404,7 +407,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Soluciones alámbicas e inalámbricas para protección integral: sensores de intrusión en puertas y ventanas, sensores de movimiento PIR, sensores de calor, botón de pánico, cercos eléctricos perimetrales y cobertura total para cualquier espacio.",
         iconName: "ShieldAlert",
-        image: "/images/dlc-seguridad.jpg",
+        image: "/images/alarma.webp",
+        imagePosition: "75% center",
         features: [
           "Sensores de intrusión alámbricos e inalámbricos para puertas y ventanas",
           "Sensores de movimiento PIR de doble tecnología anti-mascotas",
@@ -479,7 +483,7 @@ export const serviciosData: ServiceData[] = [
       { value: "30 días", label: "Grabación continua" },
       { value: "64", label: "Cámaras por sistema" },
     ],
-    mainImage: "/project-cctv.png",
+    mainImage: "/images/equipoinstalando.webp",
     subcategories: [
       {
         slug: "camaras-analogas",
@@ -487,7 +491,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistemas HDCVI, AHD y TVI de alta definición hasta 8 MP, compatibles con infraestructura existente. Ideal para actualizaciones de sistemas analógicos sin cambiar todo el cableado.",
         iconName: "Camera",
-        image: "/project-cctv.png",
+        image: "/images/analogas.webp",
+        imagePosition: "15% center",
         features: [
           "Resolución HDCVI, AHD y TVI de hasta 8 MP (4K Ultra HD)",
           "Compatible con cableado coaxial existente sin obras adicionales",
@@ -505,7 +510,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Cámaras WiFi de interior y exterior con instalación ágil, grabación en la nube y acceso remoto desde cualquier smartphone. Sin obras, sin cableado complejo.",
         iconName: "Wifi",
-        image: "/images/dlc-seguridad.jpg",
+        image: "/images/inalambrica.webp",
+        imagePosition: "center 70%",
         features: [
           "Conectividad WiFi dual band 2.4/5GHz de alta estabilidad",
           "Resolución 2K-4K con lente gran angular de 120°",
@@ -523,7 +529,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Videovigilancia IP de alta resolución sobre red estructurada, con alimentación PoE, zoom PTZ motorizado y visualización remota en tiempo real desde cualquier dispositivo.",
         iconName: "Globe",
-        image: "/dlc-image-5.jpg",
+        image: "/images/camaraip.webp",
         features: [
           "Resolución hasta 8 MP (4K) sobre red IP estructurada Cat 6",
           "Alimentación Power over Ethernet (PoE) sin cableado adicional",
@@ -541,7 +547,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Cámaras con chip 4G/LTE integrado para zonas sin internet o electricidad permanente. Funcionan con batería de respaldo autónoma. Alertas por movimiento y acceso remoto en tiempo real.",
         iconName: "Signal",
-        image: "/images/services/camara-gsm.jpg",
+        image: "/images/gsm.webp",
         features: [
           "Chip 4G/LTE integrado: no requiere internet fijo ni cableado",
           "Panel solar o batería autónoma de larga duración recargable",
@@ -559,7 +565,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Detección facial, reconocimiento de placas vehiculares, conteo de personas y análisis de comportamiento con IA embebida. Reduce falsas alarmas y genera inteligencia operativa.",
         iconName: "Cpu",
-        image: "/images/services/camara-ia.jpg",
+        image: "/images/services/camara-ia-fixed.jpg",
         features: [
           "Reconocimiento facial en tiempo real con IA embebida",
           "Lectura automática de placas vehiculares LPR/ALPR",
@@ -634,7 +640,7 @@ export const serviciosData: ServiceData[] = [
       { value: "50+", label: "Ciclos diarios soportados" },
       { value: "2 años", label: "Garantía de motor" },
     ],
-    mainImage: "/images/dlc-portones.jpg",
+    mainImage: "/images/portones-index.webp",
     subcategories: [
       {
         slug: "puertas-vehiculares",
@@ -642,7 +648,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Soluciones completas para accesos vehiculares: puertas corredizas para alto tráfico, basculantes para espacios reducidos, segmentadas industriales importadas, batientes de una o dos hojas y pérgolas bioclimáticas con lamas motorizadas.",
         iconName: "Move",
-        image: "/images/dlc-portones.jpg",
+        image: "/images/portones-index.webp",
         features: [
           "Puertas corredizas motorizadas para alto tráfico vehicular",
           "Puertas basculantes optimizadas para espacios reducidos",
@@ -660,7 +666,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Puertas cortafuegos certificadas con cerraduras antipánico y cierre automático, cumpliendo normativas de evacuación de emergencia y regulaciones del Cuerpo de Bomberos.",
         iconName: "ShieldCheck",
-        image: "/project-gate.png",
+        image: "/images/puertascortafuego.webp",
         features: [
           "Resistencia al fuego certificada de RF30 hasta RF120 minutos",
           "Cerradura antipánico conforme a normativa NFPA y Bomberos",
@@ -753,7 +759,7 @@ export const serviciosData: ServiceData[] = [
       { value: "ARCONEL", label: "Certificación oficial" },
       { value: "WiFi 6", label: "Tecnología inalámbrica" },
     ],
-    mainImage: "/images/dlc-redes.jpg",
+    mainImage: "/images/ingelectrica.webp",
     subcategories: [
       {
         slug: "diseno-electrico",
@@ -761,7 +767,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Proyectos de instalaciones eléctricas residenciales, comerciales e industriales con diseño de iluminación eficiente LED, planos técnicos y certificación ante el ARCONEL.",
         iconName: "Zap",
-        image: "/images/dlc-redes.jpg",
+        image: "/images/iluminacion.webp",
         features: [
           "Diseño de instalaciones eléctricas residenciales, comerciales e industriales",
           "Planos eléctricos con memoria técnica para permisos municipales",
@@ -779,7 +785,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Infraestructura de conectividad interna: redes inalámbricas WiFi empresarial, enlaces punto a punto y cableado estructurado categoría 6A certificado.",
         iconName: "Network",
-        image: "/images/services/redes-voz-datos.jpg",
+        image: "/images/vozydatos.webp",
         features: [
           "Cableado estructurado Cat 6A certificado con equipos FLUKE",
           "Redes WiFi 6 empresarial de alta densidad y baja latencia",
@@ -797,7 +803,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Montaje y certificación de tableros de distribución residencial e industrial, transferencias automáticas (ATS) y tableros de control con protecciones termomagnéticas y diferenciales.",
         iconName: "LayoutGrid",
-        image: "/images/services/tableros-electricos.jpg",
+        image: "/images/tableros.webp",
         features: [
           "Tableros de distribución residencial e industrial a medida",
           "Transferencias automáticas (ATS) para generadores de emergencia",
@@ -815,7 +821,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Tendido, fusión y certificación de fibra óptica monomodo y multimodo para enlaces de alta capacidad y baja latencia entre edificios o dentro de instalaciones industriales.",
         iconName: "Cpu",
-        image: "/images/services/fibra-optica.jpg",
+        image: "/images/fibraoptica.webp",
         features: [
           "Fibra monomodo (OS2) y multimodo (OM3/OM4) según requerimiento",
           "Fusión de empalmes con fusionadora de arco eléctrico de alta precisión",
@@ -973,7 +979,7 @@ export const serviciosData: ServiceData[] = [
       { value: "API REST", label: "Integración ERP/nómina" },
       { value: "3-4 sem", label: "Primer módulo listo" },
     ],
-    mainImage: "/images/dlc-image-2.jpg",
+    mainImage: "/images/softwaresolution.webp",
     subcategories: [
       {
         slug: "desarrollo-software",
@@ -981,7 +987,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Aplicaciones a medida para automatización de procesos empresariales con integración a hardware de seguridad, lectores biométricos y sistemas de control de accesos.",
         iconName: "Code2",
-        image: "/images/dlc-image-2.jpg",
+        image: "/images/softwaresolution.webp",
         features: [
           "Análisis de requerimientos y diseño UX/UI orientado al usuario",
           "Desarrollo de aplicaciones web y mobile (Android e iOS)",
@@ -999,7 +1005,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Desarrollo de módulos de integración entre sistemas RFID y plataformas ERP/CRM para automatización de registros de asistencia, inventario y trazabilidad de activos.",
         iconName: "Radio",
-        image: "/images/services/integracion-rfid.jpg",
+        image: "/images/rfid.webp",
         features: [
           "Módulos de integración RFID para plataformas ERP y CRM existentes",
           "Automatización del registro de asistencia sin intervención manual",
@@ -1017,7 +1023,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Software de gestión de horarios, asistencia y registros del personal, integrado con biometría y control de acceso físico. Exportación automática a sistemas de nómina.",
         iconName: "Users",
-        image: "/images/services/control-personal.jpg",
+        image: "/images/controlpersonal.webp",
         features: [
           "Gestión completa de horarios, turnos y calendarios del personal",
           "Registro biométrico de asistencia por huella dactilar o reconocimiento facial",
@@ -1035,7 +1041,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistema digital de registro de visitantes con pre-autorización por correo, captura de foto, impresión de credenciales temporales y reportes de concurrencia en tiempo real.",
         iconName: "UserCheck",
-        image: "/images/services/control-visitas.jpg",
+        image: "/images/controlvisitas.webp",
         features: [
           "Registro digital de visitantes con foto y captura de documento",
           "Pre-autorización de visitas enviada por correo electrónico al anfitrión",
@@ -1053,7 +1059,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Plataforma de administración de permisos, grupos de acceso, horarios y zonas restringidas con trazabilidad completa de todos los eventos de entrada y salida.",
         iconName: "Lock",
-        image: "/images/services/control-accesos-software.jpg",
+        image: "/images/controacceso2.webp",
         features: [
           "Panel web de administración multi-sede accesible desde cualquier lugar",
           "Gestión granular de permisos por zona, horario y grupo de usuarios",
@@ -1127,7 +1133,7 @@ export const serviciosData: ServiceData[] = [
       { value: "4", label: "Especialidades" },
       { value: "24h", label: "Soporte post-instalación" },
     ],
-    mainImage: "/project-cctv.png",
+    mainImage: "/images/equipoinstalando.webp",
     subcategories: [
       {
         slug: "control-incendios",
@@ -1135,7 +1141,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistemas integrales de detección, alarma y extinción de incendios certificados por el Cuerpo de Bomberos del Ecuador, con detectores de humo, rociadores y paneles inteligentes.",
         iconName: "Flame",
-        image: "/images/services-bg-1.jpg",
+        image: "/images/controlincendio.webp",
+        imagePosition: "10% center",
         features: [
           "Detectores de humo iónico, fotoeléctrico y de calor certificados",
           "Sistemas de extinción por rociadores (Sprinklers) NFPA",
@@ -1151,7 +1158,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Soluciones biométricas, RFID y de reconocimiento facial para gestionar quién entra y cuándo, desde una sola puerta hasta cientos de puntos en múltiples sedes.",
         iconName: "Fingerprint",
-        image: "/dlc-image-1.jpg",
+        image: "/images/controlacceso.webp",
         features: [
           "Lectores biométricos: huella dactilar, facial y tarjeta RFID",
           "Gestión centralizada de hasta 100.000+ usuarios registrados",
@@ -1167,7 +1174,8 @@ export const serviciosData: ServiceData[] = [
         description:
           "Protección perimetral para hogares y comercios: sensores de intrusión, cercos eléctricos, botón de pánico y notificación inmediata al propietario con monitoreo 24/7 opcional.",
         iconName: "Bell",
-        image: "/images/dlc-seguridad.jpg",
+        image: "/images/alarma.webp",
+        imagePosition: "75% center",
         features: [
           "Sensores de intrusión alámbricos e inalámbricos para puertas y ventanas",
           "Sensores de movimiento PIR de doble tecnología anti-mascotas",
@@ -1183,7 +1191,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Sistemas profesionales de videovigilancia en alta definición 4K: cámaras analógicas, IP, inalámbricas, GSM y con inteligencia artificial para monitoreo continuo.",
         iconName: "Camera",
-        image: "/project-cctv.png",
+        image: "/images/equipoinstalando.webp",
         features: [
           "Resolución hasta 8 MP (4K Ultra HD) en todas las tecnologías",
           "Cámaras analógicas, IP, WiFi, 4G/GSM y con IA embebida",

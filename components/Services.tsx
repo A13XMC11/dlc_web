@@ -31,6 +31,7 @@ type Chip = {
 };
 
 type Section = {
+  anchorId: string;
   eyebrow: string;
   title: string;
   renderSectionIcon: (className: string) => React.ReactNode;
@@ -52,6 +53,7 @@ function getServiceChips(slug: string): Chip[] {
 
 const sections: Section[] = [
   {
+    anchorId: "especialidad-seguridad-electronica",
     eyebrow: "Área Principal",
     title: "Seguridad Electrónica",
     renderSectionIcon: (className) => (
@@ -69,24 +71,36 @@ const sections: Section[] = [
     ],
   },
   {
+    anchorId: "especialidad-portones-automatizacion",
     eyebrow: "Accesos Automatizados",
     title: "Portones y Automatización",
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
     headerImage: "/portones-automaticos.png",
     allHref: "/servicios/portones-automatizacion",
     allLabel: "Ver servicio",
-    chips: getServiceChips("portones-automatizacion"),
+    chips: [
+      { title: "Puertas de Acceso Vehicular", href: "/servicios/portones-automatizacion/puertas-vehiculares", Icon: Move        },
+      { title: "Puertas Cortafuegos",         href: "/servicios/portones-automatizacion/puertas-cortafuegos", Icon: ShieldCheck },
+      { title: "Estructuras Metálicas",       href: "/servicios/portones-automatizacion/estructuras-metalicas", Icon: Layers    },
+    ],
   },
   {
+    anchorId: "especialidad-ingenieria-electrica",
     eyebrow: "Diseño y Construcción Eléctrica",
     title: "Ingeniería Eléctrica",
     renderSectionIcon: (className) => <Zap size={26} className={className} />,
     headerImage: "/ing-electrico.png",
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
-    chips: getServiceChips("ingenieria-electrica"),
+    chips: [
+      { title: "Diseño Eléctrico e Iluminación", href: "/servicios/ingenieria-electrica/diseno-electrico",    Icon: Zap        },
+      { title: "Redes de Voz y Datos",           href: "/servicios/ingenieria-electrica/redes-voz-datos",    Icon: Network    },
+      { title: "Tableros Eléctricos",             href: "/servicios/ingenieria-electrica/tableros-electricos", Icon: LayoutGrid },
+      { title: "Fibra Óptica",                    href: "/servicios/ingenieria-electrica/fibra-optica",       Icon: Cpu        },
+    ],
   },
   {
+    anchorId: "especialidad-soporte-tecnico",
     eyebrow: "Acompañamiento Continuo",
     title: "Soporte Técnico",
     renderSectionIcon: (className) => <Wrench size={26} className={className} />,
@@ -96,13 +110,20 @@ const sections: Section[] = [
     chips: getServiceChips("soporte-tecnico"),
   },
   {
+    anchorId: "especialidad-software-ti",
     eyebrow: "Soluciones de Software",
     title: "Software y TI",
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
     headerImage: "/computers.png",
     allHref: "/servicios/software-ti",
     allLabel: "Ver servicio",
-    chips: getServiceChips("software-ti"),
+    chips: [
+      { title: "Desarrollo de Software Especializado", href: "/servicios/software-ti/desarrollo-software",   Icon: Code2     },
+      { title: "Integraciones con RFID",                href: "/servicios/software-ti/integraciones-rfid",   Icon: Radio     },
+      { title: "Control de Personal",                   href: "/servicios/software-ti/control-personal",     Icon: Users     },
+      { title: "Control de Visitas",                    href: "/servicios/software-ti/control-visitas",      Icon: UserCheck },
+      { title: "Control de Accesos",                    href: "/servicios/software-ti/control-accesos-sw",   Icon: Lock      },
+    ],
   },
 ];
 
@@ -127,11 +148,12 @@ function ServiceSectionCard({
 
   return (
     <motion.div
+      id={section.anchorId}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: index * 0.08 }}
-      className="mb-5 relative group bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.35)] rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:shadow-[0_12px_60px_rgba(12,192,223,0.1)]"
+      className="mb-5 relative group bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.35)] rounded-3xl p-8 md:p-10 overflow-hidden transition-all duration-500 hover:shadow-[0_12px_60px_rgba(12,192,223,0.1)] scroll-mt-24"
     >
       {/* Subtle inner grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00F0FF04_1px,transparent_1px),linear-gradient(to_bottom,#00F0FF04_1px,transparent_1px)] bg-size-[3rem_3rem] pointer-events-none" />

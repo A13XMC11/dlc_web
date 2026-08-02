@@ -5,10 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownRight, ShieldCheck, Zap, Laptop, Wrench, Sparkles } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import cameraHero from "@/public/dlc-image-5.jpg";
-import cameraHero2 from "@/public/dlc-image-1.jpg";
-import cameraHero3 from "@/public/project-cctv.png";
-import cameraHero4 from "@/public/project-gate.png";
-import cameraHero5 from "@/public/project-smart.png";
+import cameraHero2 from "@/public/images/hero-ai-cctv.webp";
+import cameraHero3 from "@/public/images/hero-gate.webp";
+import cameraHero4 from "@/public/images/hero-network.webp";
 
 interface HeroSlide {
   src: StaticImageData;
@@ -20,7 +19,6 @@ const HERO_SLIDES: HeroSlide[] = [
   { src: cameraHero2, label: "CAM-02" },
   { src: cameraHero3, label: "CAM-03" },
   { src: cameraHero4, label: "CAM-04" },
-  { src: cameraHero5, label: "CAM-05" },
 ];
 
 const SLIDE_INTERVAL_MS = 4000;

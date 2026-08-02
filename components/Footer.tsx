@@ -3,18 +3,24 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // On the homepage, scroll smoothly to the in-page anchor. On any other
+  // page, let next/link navigate to "/#hash" normally — it handles the
+  // scroll itself once the homepage mounts.
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    if (pathname !== "/") return;
     e.preventDefault();
-    const targetElement = document.querySelector(href);
+    const targetElement = document.querySelector(hash);
     if (targetElement) {
       const offset = 80;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
@@ -34,7 +40,11 @@ export default function Footer() {
           
           {/* Column 1: Brand Info */}
           <div className="flex flex-col gap-6">
-            <Link href="#inicio" className="self-start">
+            <Link
+              href="/#inicio"
+              onClick={(e) => handleScrollToSection(e, "#inicio")}
+              className="self-start"
+            >
               <Image
                 src="/logo-dlc.png"
                 alt="DLC TEC"
@@ -102,22 +112,22 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-3.5">
               {[
-                { name: "Inicio", href: "#inicio" },
-                { name: "Sobre Nosotros", href: "#nosotros" },
-                { name: "Servicios", href: "#servicios" },
-                { name: "Estadísticas", href: "#estadisticas" },
-                { name: "Proyectos", href: "#proyectos" },
-                { name: "Testimonios", href: "#testimonios" },
-                { name: "Contacto", href: "#contacto" },
+                { name: "Inicio", href: "/#inicio" },
+                { name: "Sobre Nosotros", href: "/#nosotros" },
+                { name: "Servicios", href: "/#servicios" },
+                { name: "Estadísticas", href: "/#estadisticas" },
+                { name: "Proyectos", href: "/#proyectos" },
+                { name: "Testimonios", href: "/#testimonios" },
+                { name: "Contacto", href: "/#contacto" },
               ].map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
-                    onClick={(e) => handleScrollToSection(e, link.href)}
+                    onClick={(e) => handleScrollToSection(e, link.href.slice(1))}
                     className="text-sm text-slate-400 hover:text-brand-cyan transition-colors font-sans"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -130,20 +140,20 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-3.5">
               {[
-                "Seguridad Electrónica",
-                "Puertas Automáticas",
-                "Domótica & Smart Home",
-                "Redes Estructuradas",
-                "Energías Renovables",
-                "Computación & Soporte TI",
+                { name: "Seguridad Electrónica", href: "/#especialidad-seguridad-electronica" },
+                { name: "Puertas Automáticas", href: "/#especialidad-portones-automatizacion" },
+                { name: "Domótica & Smart Home", href: "/#especialidad-seguridad-electronica" },
+                { name: "Redes Estructuradas", href: "/#especialidad-ingenieria-electrica" },
+                { name: "Energías Renovables", href: "/#servicios" },
+                { name: "Computación & Soporte TI", href: "/#especialidad-software-ti" },
               ].map((spec) => (
-                <li key={spec}>
+                <li key={spec.name}>
                   <Link
-                    href="#servicios"
-                    onClick={(e) => handleScrollToSection(e, "#servicios")}
+                    href={spec.href}
+                    onClick={(e) => handleScrollToSection(e, spec.href.slice(1))}
                     className="text-sm text-slate-400 hover:text-brand-cyan transition-colors font-sans"
                   >
-                    {spec}
+                    {spec.name}
                   </Link>
                 </li>
               ))}

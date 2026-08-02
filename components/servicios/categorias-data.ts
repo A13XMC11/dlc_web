@@ -3,10 +3,10 @@ export type CategoriaIndexCard = {
   title: string;
   description: string;
   iconName: string;
-  headerImage?: string;
   href: string;
   cardCount: number;
   cardCountLabel: string;
+  image?: string;
 };
 
 export type CategoriaSubservice = {
@@ -59,10 +59,10 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Protección integral para hogares, comercios e industrias: detección de incendios, control de accesos, alarmas perimetrales y videovigilancia CCTV en Quito y Ecuador.",
     iconName: "ShieldCheck",
-    headerImage: "/seguridad-electrica.png",
     href: "/servicios/seguridad-electronica",
     cardCount: 4,
     cardCountLabel: "especialidades de seguridad",
+    image: "/images/equipoinstalando.webp",
   },
   {
     slug: "domotica",
@@ -73,6 +73,7 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     href: "/servicios/domotica",
     cardCount: 1,
     cardCountLabel: "soluciones disponibles",
+    image: "/images/domotica-index.webp",
   },
   {
     slug: "portones-automatizacion",
@@ -80,10 +81,10 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Fabricamos e instalamos portones automáticos, puertas industriales y estructuras metálicas a medida para residencias, condominios y empresas en Ecuador.",
     iconName: "DoorOpen",
-    headerImage: "/portones-automaticos.png",
     href: "/servicios/portones-automatizacion",
     cardCount: 3,
     cardCountLabel: "soluciones disponibles",
+    image: "/images/portones-index.webp",
   },
   {
     slug: "ingenieria-electrica",
@@ -91,10 +92,10 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Ejecutamos proyectos de ingeniería eléctrica: diseño de instalaciones, redes de voz y datos, tableros eléctricos y fibra óptica para proyectos de cualquier escala.",
     iconName: "Zap",
-    headerImage: "/ing-electrico.png",
     href: "/servicios/ingenieria-electrica",
     cardCount: 4,
     cardCountLabel: "soluciones disponibles",
+    image: "/images/ingelectrica.webp",
   },
   {
     slug: "software-ti",
@@ -102,10 +103,10 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Desarrollamos software a medida e integraciones tecnológicas para control de accesos, gestión de personal y visitas, con integración RFID y biometría.",
     iconName: "Code2",
-    headerImage: "/computers.png",
     href: "/servicios/software-ti",
     cardCount: 5,
     cardCountLabel: "soluciones disponibles",
+    image: "/images/softwaresolution.webp",
   },
   {
     slug: "soporte-tecnico",
@@ -113,10 +114,10 @@ export const categoriasIndex: CategoriaIndexCard[] = [
     description:
       "Mantenimiento preventivo y correctivo de todos los sistemas instalados por DLC Tecnológica, con SLAs garantizados y soporte remoto sin necesidad de desplazamiento.",
     iconName: "Wrench",
-    headerImage: "/servicio-tecnico.png",
     href: "/servicios/soporte-tecnico",
     cardCount: 1,
     cardCountLabel: "soluciones disponibles",
+    image: "/images/edificio-dlc.webp",
   },
 ];
 
@@ -140,7 +141,7 @@ export const seguridadElectronicaData: CategoriaData = {
     { value: "4", label: "Especialidades de seguridad" },
     { value: "24h", label: "Soporte post-instalación" },
   ],
-  mainImage: "/project-cctv.png",
+  mainImage: "/images/equipoinstalando.webp",
   subservices: [
     {
       slug: "control-incendios",
@@ -148,7 +149,7 @@ export const seguridadElectronicaData: CategoriaData = {
       description:
         "Sistemas integrales de detección, alarma y extinción de incendios certificados por el Cuerpo de Bomberos del Ecuador, con detectores de humo, rociadores y paneles inteligentes.",
       iconName: "Flame",
-      image: "/images/services-bg-1.jpg",
+      image: "/images/controlincendio.webp",
       features: [
         "Detectores de humo iónico, fotoeléctrico y de calor certificados",
         "Sistemas de extinción por rociadores (Sprinklers) NFPA",
@@ -164,7 +165,7 @@ export const seguridadElectronicaData: CategoriaData = {
       description:
         "Soluciones biométricas, RFID y de reconocimiento facial para gestionar quién entra y cuándo, desde una sola puerta hasta cientos de puntos en múltiples sedes.",
       iconName: "Fingerprint",
-      image: "/dlc-image-1.jpg",
+      image: "/images/controlacceso.webp",
       features: [
         "Lectores biométricos: huella dactilar, facial y tarjeta RFID",
         "Gestión centralizada de hasta 100.000+ usuarios registrados",
@@ -180,7 +181,7 @@ export const seguridadElectronicaData: CategoriaData = {
       description:
         "Protección perimetral para hogares y comercios: sensores de intrusión, cercos eléctricos, botón de pánico y notificación inmediata al propietario con monitoreo 24/7 opcional.",
       iconName: "Bell",
-      image: "/images/dlc-seguridad.jpg",
+      image: "/images/alarma.webp",
       features: [
         "Sensores de intrusión alámbricos e inalámbricos para puertas y ventanas",
         "Sensores de movimiento PIR de doble tecnología anti-mascotas",
@@ -196,7 +197,7 @@ export const seguridadElectronicaData: CategoriaData = {
       description:
         "Sistemas profesionales de videovigilancia en alta definición 4K: cámaras analógicas, IP, inalámbricas, GSM y con inteligencia artificial para monitoreo continuo.",
       iconName: "Camera",
-      image: "/project-cctv.png",
+      image: "/images/equipoinstalando.webp",
       features: [
         "Resolución hasta 8 MP (4K Ultra HD) en todas las tecnologías",
         "Cámaras analógicas, IP, WiFi, 4G/GSM y con IA embebida",

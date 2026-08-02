@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PhoneCall, CheckCircle, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -134,16 +135,36 @@ export default function SubcategoryDetail({ service, subcategory }: Props) {
               </motion.div>
             </div>
 
-            {/* Icon display */}
-            {SubIcon && (
+            {/* Image / icon display */}
+            {subcategory.image ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="hidden lg:flex w-48 h-48 rounded-3xl bg-[#0e4956] border border-[#242424] items-center justify-center flex-shrink-0"
+                className="hidden lg:block relative w-80 h-80 rounded-3xl overflow-hidden border border-[#242424] flex-shrink-0"
               >
-                <SubIcon size={72} className="text-cyan-neon opacity-60" />
+                <Image
+                  src={subcategory.image}
+                  alt={`${subcategory.title} — DLC Tecnológica`}
+                  fill
+                  priority
+                  className="object-cover"
+                  style={{ objectPosition: subcategory.imagePosition ?? "center" }}
+                  sizes="320px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f]/70 via-transparent to-transparent" />
               </motion.div>
+            ) : (
+              SubIcon && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  className="hidden lg:flex w-48 h-48 rounded-3xl bg-[#0e4956] border border-[#242424] items-center justify-center flex-shrink-0"
+                >
+                  <SubIcon size={72} className="text-cyan-neon opacity-60" />
+                </motion.div>
+              )
             )}
           </div>
         </div>
