@@ -2,12 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDownRight, ShieldCheck, Zap, Laptop, Wrench, Sparkles } from "lucide-react";
+import { ArrowDownRight, Sparkles } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import cameraHero from "@/public/dlc-image-5.jpg";
 import cameraHero2 from "@/public/images/hero-ai-cctv.webp";
 import cameraHero3 from "@/public/images/hero-gate.webp";
 import cameraHero4 from "@/public/images/hero-network.webp";
+import iconSeguridad from "@/public/seguridad-electrica.png";
+import iconServicio from "@/public/servicio-tecnico.png";
+import iconPortones from "@/public/portones-automaticos.png";
+import iconIngenieria from "@/public/ing-electrico.png";
+import iconComputers from "@/public/computers.png";
 
 interface HeroSlide {
   src: StaticImageData;
@@ -22,6 +28,20 @@ const HERO_SLIDES: HeroSlide[] = [
 ];
 
 const SLIDE_INTERVAL_MS = 4000;
+
+interface ServiceIcon {
+  img: StaticImageData;
+  alt: string;
+  href: string;
+}
+
+const SERVICE_ICONS: ServiceIcon[] = [
+  { img: iconSeguridad, alt: "Seguridad Eléctrica", href: "/servicios/seguridad-electronica" },
+  { img: iconServicio, alt: "Servicio Técnico", href: "/servicios/soporte-tecnico" },
+  { img: iconPortones, alt: "Portones Automáticos", href: "/servicios/portones-automatizacion" },
+  { img: iconIngenieria, alt: "Ingeniería Eléctrica y Electrónica", href: "/servicios/ingenieria-electrica" },
+  { img: iconComputers, alt: "Computers", href: "/servicios/software-ti" },
+];
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -50,6 +70,7 @@ export default function Hero() {
   };
 
   return (
+    <>
     <section
       id="inicio"
       ref={heroRef}
@@ -135,28 +156,6 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Feature mini-grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-xl mt-12 pt-10 border-t border-[#242424]/80"
-            >
-              {[
-                { icon: ShieldCheck, title: "CCTV & Alarmas", desc: "Monitoreo 24/7" },
-                { icon: Zap,         title: "Smart Home",    desc: "Hogar inteligente" },
-                { icon: Laptop,      title: "Redes & TI",    desc: "Infraestructura" },
-                { icon: Wrench,      title: "Ingeniería",    desc: "Eléctrica" },
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center">
-                  <div className="w-10 h-10 rounded-xl bg-[#0e4956] border border-[#242424] flex items-center justify-center mb-2 text-cyan-neon">
-                    <item.icon className="w-5 h-5" />
-                  </div>
-                  <p className="font-semibold text-white text-xs leading-tight">{item.title}</p>
-                  <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* ── RIGHT: CCTV Monitor frame ── */}
@@ -276,5 +275,25 @@ export default function Hero() {
         </div>
       </div>
     </section>
+
+    {/* ── Thin horizontal services strip ── */}
+    <div className="relative overflow-x-auto bg-dark-deep border-t border-b border-[#242424]/80 py-6">
+      <div className="flex items-center justify-center gap-10 sm:gap-16 min-w-max mx-auto px-4">
+        {SERVICE_ICONS.map((item, idx) => (
+          <Link
+            key={idx}
+            href={item.href}
+            className="flex items-center justify-center shrink-0"
+          >
+            <Image
+              src={item.img}
+              alt={item.alt}
+              className="h-8 sm:h-10 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+            />
+          </Link>
+        ))}
+      </div>
+    </div>
+    </>
   );
 }
