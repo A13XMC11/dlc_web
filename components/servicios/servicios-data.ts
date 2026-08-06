@@ -178,13 +178,14 @@ export const serviciosData: ServiceData[] = [
       },
       {
         slug: "video-porteros",
-        title: "Porteros y Video Porteros",
+        title: "Cerraduras Inteligentes y Video Porteros",
         description:
-          "Teléfonos con video de portería: videoporteros IP con cámara HD y comunicación bidireccional para identificar y autorizar visitas de forma remota desde cualquier dispositivo.",
+          "Teléfonos con video de portería: videoporteros IP con cámara HD y comunicación bidireccional, combinados con cerraduras inteligentes para identificar, autorizar y abrir accesos de forma remota desde cualquier dispositivo.",
         iconName: "Video",
         image: "/images/services/video-portero.jpg",
         features: [
           "Videoportero IP con cámara HD 2MP gran angular",
+          "Cerraduras inteligentes con apertura remota, PIN o huella digital",
           "Comunicación bidireccional de audio y video en tiempo real",
           "Apertura remota desde smartphone (Android e iOS)",
           "Registro fotográfico de visitas con fecha y hora",
@@ -405,13 +406,14 @@ export const serviciosData: ServiceData[] = [
         slug: "alarmas-robos",
         title: "Alarmas contra Robos y Asaltos",
         description:
-          "Soluciones alámbicas e inalámbricas para protección integral: sensores de intrusión en puertas y ventanas, sensores de movimiento PIR, sensores de calor, botón de pánico, cercos eléctricos perimetrales y cobertura total para cualquier espacio.",
+          "Soluciones alámbicas e inalámbricas para protección integral: sensores de intrusión en puertas y ventanas, sensores de movimiento PIR, cercos infrarrojos y eléctricos perimetrales, sensores de calor, botón de pánico y cobertura total para cualquier espacio.",
         iconName: "ShieldAlert",
         image: "/images/alarma.webp",
         imagePosition: "75% center",
         features: [
           "Sensores de intrusión alámbricos e inalámbricos para puertas y ventanas",
           "Sensores de movimiento PIR de doble tecnología anti-mascotas",
+          "Cercos infrarrojos perimetrales para detección de intrusión en el límite del predio",
           "Sensores de rotura de vidrio y vibración de alta sensibilidad",
           "Cercos eléctricos perimetrales certificados con energizador",
           "Botón de pánico inalámbrico portátil para cualquier emergencia",
@@ -833,6 +835,22 @@ export const serviciosData: ServiceData[] = [
           "Documentación técnica de planta externa e interna entregada",
         ],
       },
+      {
+        slug: "paneles-solares",
+        title: "Paneles Solares",
+        description:
+          "Diseño e instalación de sistemas fotovoltaicos residenciales, comerciales e industriales para reducir el consumo eléctrico y aportar energía renovable a la instalación.",
+        iconName: "Sun",
+        image: "/images/hero-solar.webp",
+        features: [
+          "Diseño de sistemas fotovoltaicos a medida según consumo del cliente",
+          "Paneles solares de alta eficiencia con garantía de fábrica",
+          "Instalación con inversores certificados y monitoreo de generación",
+          "Sistemas conectados a la red (on-grid) o con banco de baterías (off-grid)",
+          "Cálculo de retorno de inversión y ahorro energético proyectado",
+          "Certificación técnica ante la empresa eléctrica distribuidora",
+        ],
+      },
     ],
     benefits: [
       {
@@ -1199,6 +1217,22 @@ export const serviciosData: ServiceData[] = [
           "Acceso remoto en tiempo real desde cualquier dispositivo",
           "Reconocimiento facial y lectura de placas vehiculares (LPR)",
           "Diseño de plano de cobertura con visita técnica gratuita",
+        ],
+      },
+      {
+        slug: "video-porteros",
+        title: "Video Porteros",
+        description:
+          "Videoporteros IP con cámara HD y comunicación bidireccional, integrados con cerraduras inteligentes para identificar, autorizar y abrir accesos de forma remota desde cualquier dispositivo.",
+        iconName: "Video",
+        image: "/images/services/video-portero.jpg",
+        features: [
+          "Videoportero IP con cámara HD 2MP gran angular",
+          "Cerraduras inteligentes con apertura remota, PIN o huella digital",
+          "Comunicación bidireccional de audio y video en tiempo real",
+          "Apertura remota desde smartphone (Android e iOS)",
+          "Registro fotográfico de visitas con fecha y hora",
+          "Visión nocturna por infrarrojo para uso 24/7",
         ],
       },
     ],

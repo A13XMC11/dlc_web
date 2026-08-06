@@ -36,11 +36,11 @@ interface ServiceIcon {
 }
 
 const SERVICE_ICONS: ServiceIcon[] = [
-  { img: iconSeguridad, alt: "Seguridad Eléctrica", href: "/servicios/seguridad-electronica" },
+  { img: iconSeguridad, alt: "Seguridad Electrónica", href: "/servicios/seguridad-electronica" },
   { img: iconServicio, alt: "Servicio Técnico", href: "/servicios/soporte-tecnico" },
   { img: iconPortones, alt: "Portones Automáticos", href: "/servicios/portones-automatizacion" },
   { img: iconIngenieria, alt: "Ingeniería Eléctrica y Electrónica", href: "/servicios/ingenieria-electrica" },
-  { img: iconComputers, alt: "Computers", href: "/servicios/software-ti" },
+  { img: iconComputers, alt: "Computadores y Software", href: "/servicios/software-ti" },
 ];
 
 export default function Hero() {
@@ -98,7 +98,7 @@ export default function Hero() {
 
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glassmorphism text-xs font-semibold tracking-wider text-brand-cyan mb-6 border border-brand-cyan/40"
@@ -109,7 +109,7 @@ export default function Hero() {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-sans text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white mb-6"
@@ -121,19 +121,29 @@ export default function Hero() {
               <span className="block mt-1 text-white">Premium en Ecuador</span>
             </motion.h1>
 
+            {/* Integrator line */}
+            <motion.p
+              initial={{ opacity: 1, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="font-sans text-sm sm:text-base text-cyan-neon font-semibold tracking-wide mb-4"
+            >
+              Por integradores de tecnología eléctrica y electrónica en Ecuador
+            </motion.p>
+
             {/* Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 1, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-sans text-base sm:text-lg text-slate-400 max-w-xl mb-10 leading-relaxed"
             >
-              En <span className="text-white font-semibold">DLC Tecnológica</span> diseñamos e instalamos sistemas de CCTV, portones automáticos, Smart Home y redes estructuradas para empresas y hogares en Ecuador.
+              En <span className="text-white font-semibold">DLC Tecnológica</span> diseñamos e instalamos sistemas de Seguridad Electrónica, portones automáticos, Smart Home, redes eléctricas y de datos, para empresas y hogares en Ecuador.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
@@ -160,7 +170,7 @@ export default function Hero() {
 
           {/* ── RIGHT: CCTV Monitor frame ── */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 1, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
             className="flex-shrink-0 w-full max-w-sm lg:max-w-md xl:max-w-lg"

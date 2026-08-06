@@ -9,7 +9,7 @@ import {
   Users, Video, GitMerge, Radio, Monitor,
   BellRing, Wifi, Globe, Signal, Cpu,
   ShieldAlert, Move, ShieldCheck, Layers,
-  Network, LayoutGrid, UserCheck, Lock,
+  Network, LayoutGrid, UserCheck, Lock, Sun,
   type LucideIcon,
 } from "lucide-react";
 import { MdOutlineSecurity } from "react-icons/md";
@@ -21,7 +21,7 @@ import { serviciosData } from "@/components/servicios/servicios-data";
 const ICON_MAP: Record<string, LucideIcon> = {
   Camera, Bell, Fingerprint, Flame, Home, DoorOpen, Zap, Wrench, Code2,
   Users, Video, GitMerge, Radio, Monitor, BellRing, Wifi, Globe, Signal, Cpu,
-  ShieldAlert, Move, ShieldCheck, Layers, Network, LayoutGrid, UserCheck, Lock,
+  ShieldAlert, Move, ShieldCheck, Layers, Network, LayoutGrid, UserCheck, Lock, Sun,
 };
 
 type Chip = {
@@ -67,13 +67,13 @@ const sections: Section[] = [
       { title: "Alarmas",               href: "/servicios/alarmas",           Icon: Bell        },
       { title: "Control de Accesos",    href: "/servicios/control-accesos",   Icon: Fingerprint },
       { title: "Control de Incendios",  href: "/servicios/control-incendios", Icon: Flame       },
-      { title: "Domótica y Smart Home", href: "/servicios/domotica",          Icon: Home        },
+      { title: "Video Porteros",        href: "/servicios/seguridad-electronica/video-porteros", Icon: Video },
     ],
   },
   {
     anchorId: "especialidad-portones-automatizacion",
     eyebrow: "Accesos Automatizados",
-    title: "Portones y Automatización",
+    title: "Puertas Automáticas",
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
     headerImage: "/portones-automaticos.png",
     allHref: "/servicios/portones-automatizacion",
@@ -85,10 +85,20 @@ const sections: Section[] = [
     ],
   },
   {
-    anchorId: "especialidad-ingenieria-electrica",
+    anchorId: "especialidad-domotica",
+    eyebrow: "Automatización del Hogar",
+    title: "Domótica & Smart Home",
+    renderSectionIcon: (className) => <Home size={26} className={className} />,
+    headerImage: "/images/dlc-smarthome.png",
+    allHref: "/servicios/domotica",
+    allLabel: "Ver servicio",
+    chips: getServiceChips("domotica"),
+  },
+  {
+    anchorId: "especialidad-redes-estructuradas",
     eyebrow: "Diseño y Construcción Eléctrica",
-    title: "Ingeniería Eléctrica",
-    renderSectionIcon: (className) => <Zap size={26} className={className} />,
+    title: "Redes Estructuradas",
+    renderSectionIcon: (className) => <Network size={26} className={className} />,
     headerImage: "/ing-electrico.png",
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
@@ -100,19 +110,20 @@ const sections: Section[] = [
     ],
   },
   {
-    anchorId: "especialidad-soporte-tecnico",
-    eyebrow: "Acompañamiento Continuo",
-    title: "Soporte Técnico",
-    renderSectionIcon: (className) => <Wrench size={26} className={className} />,
-    headerImage: "/servicio-tecnico.png",
-    allHref: "/servicios/soporte-tecnico",
+    anchorId: "especialidad-energias-renovables",
+    eyebrow: "Eficiencia Energética",
+    title: "Energías Renovables",
+    renderSectionIcon: (className) => <Sun size={26} className={className} />,
+    allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
-    chips: getServiceChips("soporte-tecnico"),
+    chips: [
+      { title: "Paneles Solares", href: "/servicios/ingenieria-electrica/paneles-solares", Icon: Sun },
+    ],
   },
   {
-    anchorId: "especialidad-software-ti",
-    eyebrow: "Soluciones de Software",
-    title: "Software y TI",
+    anchorId: "especialidad-computacion-soporte",
+    eyebrow: "Soluciones de Software y Soporte",
+    title: "Computación & Soporte TI",
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
     headerImage: "/computers.png",
     allHref: "/servicios/software-ti",
@@ -123,6 +134,7 @@ const sections: Section[] = [
       { title: "Control de Personal",                   href: "/servicios/software-ti/control-personal",     Icon: Users     },
       { title: "Control de Visitas",                    href: "/servicios/software-ti/control-visitas",      Icon: UserCheck },
       { title: "Control de Accesos",                    href: "/servicios/software-ti/control-accesos-sw",   Icon: Lock      },
+      ...getServiceChips("soporte-tecnico"),
     ],
   },
 ];
