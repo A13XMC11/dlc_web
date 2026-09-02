@@ -4,7 +4,17 @@ import "./globals.css";
 import ScrollReset from "@/components/ScrollReset";
 import CursorGlow from "@/components/CursorGlow";
 import JsonLd from "@/components/seo/JsonLd";
-import { localBusinessSchema } from "@/lib/seo/schema";
+import {
+  DEFAULT_OG_IMAGE,
+  LOGO_IMAGE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  SYMBOL_IMAGE,
+  localBusinessSchema,
+  siteNavigationSchema,
+  websiteSchema,
+} from "@/lib/seo/schema";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-heading",
@@ -24,40 +34,65 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dlc.com.ec"),
-  title: "DLC Tecnológica | Seguridad Electrónica y Domótica en Ecuador",
-  description: "Expertos en CCTV, alarmas, control de accesos, domótica y portones automáticos en Ecuador. Más de 25 años protegiendo hogares y empresas.",
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  title: {
+    default: "DLC Tecnológica | Seguridad Electrónica, CCTV y Domótica en Quito",
+    template: "%s | DLC Tecnológica",
+  },
+  description: SITE_DESCRIPTION,
   keywords: [
-    "DLC Tecnológica", "Seguridad Electrónica", "CCTV", "Alarmas de seguridad", "Control de accesos",
-    "Puertas automáticas Ecuador", "Domótica", "Smart Home Ecuador", "Redes estructuradas",
-    "Diseño eléctrico", "Energías renovables Ecuador", "Motores para portones"
+    "DLC Tecnológica",
+    "seguridad electrónica Quito",
+    "seguridad electrónica Ecuador",
+    "CCTV Quito",
+    "cámaras de seguridad Quito",
+    "alarmas de seguridad Quito",
+    "control de accesos Quito",
+    "domótica Quito",
+    "smart home Ecuador",
+    "portones automáticos Quito",
+    "ingeniería eléctrica Quito",
+    "redes estructuradas Quito",
+    "paneles solares Ecuador",
   ],
   authors: [{ name: "DLC Tecnológica" }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "technology",
   robots: "index, follow",
   alternates: {
     canonical: "/",
+    languages: {
+      "es-EC": "/",
+    },
+  },
+  icons: {
+    icon: SYMBOL_IMAGE,
+    shortcut: SYMBOL_IMAGE,
+    apple: SYMBOL_IMAGE,
   },
   openGraph: {
     type: "website",
     locale: "es_EC",
-    url: "https://dlc.com.ec",
-    title: "DLC Tecnológica | Soluciones Tecnológicas Premium",
-    description: "Expertos en seguridad electrónica, domótica y automatizaciones avanzadas en Ecuador. Estilo y fiabilidad tecnológica de vanguardia.",
-    siteName: "DLC Tecnológica",
+    url: SITE_URL,
+    title: "DLC Tecnológica | Seguridad Electrónica, CCTV y Domótica en Quito",
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
     images: [
       {
-        url: "/logo-dlc.png",
+        url: DEFAULT_OG_IMAGE,
         width: 3090,
         height: 1438,
-        alt: "DLC Tecnológica",
+        alt: "DLC Tecnológica - seguridad electrónica, domótica e ingeniería eléctrica en Ecuador",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DLC Tecnológica | Seguridad Electrónica y Domótica en Ecuador",
-    description: "Expertos en CCTV, alarmas, control de accesos, domótica y portones automáticos en Ecuador.",
-    images: ["/logo-dlc.png"],
+    title: "DLC Tecnológica | Seguridad Electrónica, CCTV y Domótica en Quito",
+    description: SITE_DESCRIPTION,
+    images: [LOGO_IMAGE],
   },
 };
 
@@ -73,6 +108,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <JsonLd data={localBusinessSchema} />
+        <JsonLd data={websiteSchema()} />
+        <JsonLd data={siteNavigationSchema()} />
         <CursorGlow />
         <ScrollReset />
         {children}

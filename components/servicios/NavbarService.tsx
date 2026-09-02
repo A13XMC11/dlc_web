@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const navLinks = [
   { name: "Inicio",          href: "/#inicio" },
-  { name: "Sobre Nosotros",  href: "/#nosotros" },
+  { name: "Sobre Nosotros",  href: "/nosotros" },
   { name: "Servicios",       href: "/servicios" },
   { name: "Estadísticas",    href: "/#estadisticas" },
   { name: "Proyectos",       href: "/#proyectos" },
@@ -43,7 +43,7 @@ export default function NavbarService() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src="/logo-dlc.png"
+              src="/logo-dlc.webp"
               alt="DLC TEC"
               width={129}
               height={60}

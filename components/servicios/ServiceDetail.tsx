@@ -8,7 +8,7 @@ import {
   Zap, Camera, Globe, Signal, Move, ArrowUpDown, LayoutGrid, DoorOpen, Sun,
   Layers, Wrench, Settings, Headphones, Code2, UserCheck, Lock, Network,
 } from "lucide-react";
-import type { ServiceData } from "./servicios-data";
+import { serviciosData, type ServiceData } from "./servicios-data";
 import FaqAccordion from "./FaqAccordion";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -18,12 +18,29 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Layers, Wrench, Settings, Headphones, Code2, UserCheck, Lock, Network,
 };
 
+const RELATED_SERVICE_SLUGS: Record<string, string[]> = {
+  "seguridad-electronica": ["cctv", "alarmas", "control-accesos"],
+  "control-incendios": ["seguridad-electronica", "ingenieria-electrica", "soporte-tecnico"],
+  "control-accesos": ["cctv", "alarmas", "software-ti"],
+  domotica: ["cctv", "portones-automatizacion", "ingenieria-electrica"],
+  alarmas: ["cctv", "control-accesos", "seguridad-electronica"],
+  cctv: ["alarmas", "control-accesos", "software-ti"],
+  "portones-automatizacion": ["control-accesos", "domotica", "soporte-tecnico"],
+  "ingenieria-electrica": ["domotica", "cctv", "soporte-tecnico"],
+  "soporte-tecnico": ["cctv", "alarmas", "control-accesos"],
+  "software-ti": ["control-accesos", "cctv", "soporte-tecnico"],
+};
+
 interface Props {
   service: ServiceData;
 }
 
 export default function ServiceDetail({ service }: Props) {
   const waHref = `https://wa.me/593958689116?text=${encodeURIComponent(service.waMessage)}`;
+  const relatedServices = (RELATED_SERVICE_SLUGS[service.slug] ?? [])
+    .filter((slug) => slug !== service.slug)
+    .map((slug) => serviciosData.find((item) => item.slug === slug))
+    .filter((item): item is ServiceData => Boolean(item));
 
   return (
     <>
@@ -164,7 +181,7 @@ export default function ServiceDetail({ service }: Props) {
             <div className="relative flex items-center justify-center h-[420px]">
               <div className="relative h-full w-full">
                 <Image
-                  src="/logo-dlctec-symbol.png"
+                  src="/logo-dlctec-symbol.webp"
                   alt={`Escudo DLCtec — ${service.title}`}
                   fill
                   priority
@@ -301,6 +318,48 @@ export default function ServiceDetail({ service }: Props) {
           </div>
         </div>
       </section>
+
+      {relatedServices.length > 0 && (
+        <section className="py-20 bg-[#080808] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <p className="text-brand-cyan font-bold text-xs uppercase tracking-widest mb-2">
+                Servicios relacionados
+              </p>
+              <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white">
+                Soluciones que complementan {service.title}
+              </h2>
+              <div className="h-1 w-20 bg-brand-cyan mt-4 rounded-full mx-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedServices.map((related) => {
+                const RelatedIcon = ICON_MAP[related.indexIconName] ?? ArrowRight;
+
+                return (
+                  <Link
+                    key={related.slug}
+                    href={`/servicios/${related.slug}`}
+                    className="group relative bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.5)] rounded-2xl p-6 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-cyan-neon transition-all duration-[400ms]" />
+                    <RelatedIcon className="w-8 h-8 text-brand-cyan mb-5" />
+                    <h3 className="font-sans text-lg font-bold text-white mb-3 group-hover:text-cyan-neon transition-colors">
+                      {related.title}
+                    </h3>
+                    <p className="text-sm text-slate-400 leading-relaxed line-clamp-3">
+                      {related.description}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-slate-500 group-hover:text-cyan-neon transition-colors">
+                      Ver servicio <ArrowRight size={12} />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQs ── */}
       <section className="py-24 bg-[#01313f] overflow-hidden">

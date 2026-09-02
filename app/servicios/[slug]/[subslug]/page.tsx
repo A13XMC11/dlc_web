@@ -6,7 +6,14 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { serviciosData } from "@/components/servicios/servicios-data";
 import JsonLd from "@/components/seo/JsonLd";
-import { SITE_URL, breadcrumbSchema, subcategorySchema } from "@/lib/seo/schema";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbSchema,
+  subcategorySchema,
+} from "@/lib/seo/schema";
 
 type Props = {
   params: Promise<{ slug: string; subslug: string }>;
@@ -28,20 +35,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!service || !subcategory) return {};
 
-  const seoDescription = `${subcategory.description.slice(0, 140)} · DLC Tecnológica, Quito, Ecuador.`;
+  const seoDescription = `${subcategory.description.slice(0, 145)} · DLC Tecnológica, Quito, Ecuador.`;
+  const pageUrl = `${SITE_URL}/servicios/${slug}/${subslug}`;
+  const imageUrl = subcategory.image ? absoluteUrl(subcategory.image) : DEFAULT_OG_IMAGE;
 
   return {
-    title: `${subcategory.title} — ${service.title} | DLC Tecnológica`,
+    title: `${subcategory.title} en Quito | ${service.title}`,
     description: seoDescription,
     openGraph: {
-      title: `${subcategory.title} | DLC Tecnológica`,
+      title: `${subcategory.title} en Quito | DLC Tecnológica`,
       description: seoDescription,
+      url: pageUrl,
       type: "website",
       locale: "es_EC",
-      siteName: "DLC Tecnológica",
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${subcategory.title} en Quito y Ecuador - DLC Tecnológica`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${subcategory.title} en Quito | DLC Tecnológica`,
+      description: seoDescription,
+      images: [imageUrl],
     },
     alternates: {
-      canonical: `https://dlc.com.ec/servicios/${slug}/${subslug}`,
+      canonical: pageUrl,
     },
   };
 }

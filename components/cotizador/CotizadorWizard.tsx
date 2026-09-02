@@ -140,6 +140,18 @@ function ToggleCard({
   );
 }
 
+function SummaryRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-start gap-3 py-3 border-b border-[#1e1e1e] last:border-0">
+      <span className="text-[#0cc0df] mt-0.5 shrink-0">{icon}</span>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">{label}</p>
+        <p className="text-white text-sm mt-0.5 break-words">{value}</p>
+      </div>
+    </div>
+  );
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
@@ -238,7 +250,7 @@ function StepEspacio({ cfg, setCfg }: { cfg: WizardConfig; setCfg: (c: WizardCon
 function StepDetalles({ cfg, setCfg }: { cfg: WizardConfig; setCfg: (c: WizardConfig) => void }) {
   const has = (id: string) => cfg.services.includes(id);
 
-  const grid = (items: OptionItem[], selected: string[], onToggle: (id: string) => void, single = false) => (
+  const grid = (items: OptionItem[], selected: string[], onToggle: (id: string) => void) => (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
       {items.map((opt) => (
         <ToggleCard
@@ -252,7 +264,7 @@ function StepDetalles({ cfg, setCfg }: { cfg: WizardConfig; setCfg: (c: WizardCo
   );
 
   const singleGrid = (items: OptionItem[], val: string, set: (v: string) => void) =>
-    grid(items, val ? [val] : [], (id) => set(val === id ? "" : id), true);
+    grid(items, val ? [val] : [], (id) => set(val === id ? "" : id));
 
   const multiGrid = (items: OptionItem[], arr: string[], set: (a: string[]) => void) =>
     grid(items, arr, (id) => set(toggleArr(arr, id)));
@@ -457,52 +469,42 @@ function StepResumen({ cfg }: { cfg: WizardConfig }) {
   const urgency   = URGENCY_OPTIONS.find((u) => u.id === cfg.contact.urgency);
   const techVisit = TECH_VISIT_OPTIONS.find((t) => t.id === cfg.contact.techVisit);
 
-  const Row = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
-    <div className="flex items-start gap-3 py-3 border-b border-[#1e1e1e] last:border-0">
-      <span className="text-[#0cc0df] mt-0.5 shrink-0">{icon}</span>
-      <div className="flex-1 min-w-0">
-        <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">{label}</p>
-        <p className="text-white text-sm mt-0.5 break-words">{value}</p>
-      </div>
-    </div>
-  );
-
   return (
     <div className="space-y-6">
       <div className="bg-[#0e4956] border border-[#242424] rounded-2xl p-5 space-y-0.5">
-        <Row
+        <SummaryRow
           icon={<Settings className="w-4 h-4" />}
           label="Servicios"
           value={svcLabels.join(", ")}
         />
-        <Row
+        <SummaryRow
           icon={<MapPin className="w-4 h-4" />}
           label="Espacio"
           value={`${spaceType} · ${spaceSize?.label} (${spaceSize?.description ?? ""})`}
         />
-        <Row
+        <SummaryRow
           icon={<User className="w-4 h-4" />}
           label="Nombre"
           value={cfg.contact.name}
         />
-        <Row
+        <SummaryRow
           icon={<Phone className="w-4 h-4" />}
           label="Teléfono"
           value={cfg.contact.phone}
         />
         {cfg.contact.email && (
-          <Row icon={<Mail className="w-4 h-4" />} label="Correo" value={cfg.contact.email} />
+          <SummaryRow icon={<Mail className="w-4 h-4" />} label="Correo" value={cfg.contact.email} />
         )}
         {cfg.contact.sector && (
-          <Row icon={<MapPin className="w-4 h-4" />} label="Sector" value={cfg.contact.sector} />
+          <SummaryRow icon={<MapPin className="w-4 h-4" />} label="Sector" value={cfg.contact.sector} />
         )}
-        <Row
+        <SummaryRow
           icon={<Clock className="w-4 h-4" />}
           label="Urgencia"
           value={`${urgency?.label} — ${urgency?.description}`}
         />
         {techVisit && (
-          <Row
+          <SummaryRow
             icon={<MapPin className="w-4 h-4" />}
             label="Visita técnica"
             value={techVisit.label}

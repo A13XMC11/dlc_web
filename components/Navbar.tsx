@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, PhoneCall, ClipboardList } from "lucide-react";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const navLinks = [
   { name: "Inicio",        href: "#inicio" },
-  { name: "Sobre Nosotros", href: "#nosotros" },
+  { name: "Sobre Nosotros", href: "/nosotros" },
   { name: "Servicios",     href: "/servicios" },
   { name: "Estadísticas",  href: "#estadisticas" },
   { name: "Proyectos",     href: "#proyectos" },
@@ -97,7 +97,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="#inicio" className="flex items-center group">
             <Image
-              src="/logo-dlc.png"
+              src="/logo-dlc.webp"
               alt="DLC TEC"
               width={129}
               height={60}

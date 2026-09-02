@@ -15,7 +15,7 @@ import {
 import { MdOutlineSecurity } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
-import servicesBg from "@/public/images/services-bg-2.jpg";
+import servicesBg from "@/public/images/services-bg-2.webp";
 import { serviciosData } from "@/components/servicios/servicios-data";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -46,7 +46,7 @@ function getServiceChips(slug: string): Chip[] {
   if (!service) return [];
   return service.subcategories.map((sub) => ({
     title: sub.title,
-    href: `/servicios/${slug}`,
+    href: `/servicios/${slug}/${sub.slug}`,
     Icon: ICON_MAP[sub.iconName] ?? Wrench,
   }));
 }
@@ -59,7 +59,7 @@ const sections: Section[] = [
     renderSectionIcon: (className) => (
       <MdOutlineSecurity size={34} className={className} />
     ),
-    headerImage: "/seguridad-electrica.png",
+    headerImage: "/seguridad-electrica.webp",
     allHref: "/servicios/seguridad-electronica",
     allLabel: "Ver servicio",
     chips: [
@@ -75,7 +75,7 @@ const sections: Section[] = [
     eyebrow: "Accesos Automatizados",
     title: "Puertas Automáticas",
     renderSectionIcon: (className) => <DoorOpen size={26} className={className} />,
-    headerImage: "/portones-automaticos.png",
+    headerImage: "/portones-automaticos.webp",
     allHref: "/servicios/portones-automatizacion",
     allLabel: "Ver servicio",
     chips: [
@@ -89,7 +89,7 @@ const sections: Section[] = [
     eyebrow: "Automatización del Hogar",
     title: "Domótica & Smart Home",
     renderSectionIcon: (className) => <Home size={26} className={className} />,
-    headerImage: "/images/dlc-smarthome.png",
+    headerImage: "/domotica.webp",
     allHref: "/servicios/domotica",
     allLabel: "Ver servicio",
     chips: getServiceChips("domotica"),
@@ -99,7 +99,7 @@ const sections: Section[] = [
     eyebrow: "Diseño y Construcción Eléctrica",
     title: "Redes Estructuradas",
     renderSectionIcon: (className) => <Network size={26} className={className} />,
-    headerImage: "/ing-electrico.png",
+    headerImage: "/ing-electrico.webp",
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
     chips: [
@@ -114,6 +114,7 @@ const sections: Section[] = [
     eyebrow: "Eficiencia Energética",
     title: "Energías Renovables",
     renderSectionIcon: (className) => <Sun size={26} className={className} />,
+    headerImage: "/energias-renovables.webp",
     allHref: "/servicios/ingenieria-electrica",
     allLabel: "Ver servicio",
     chips: [
@@ -125,7 +126,7 @@ const sections: Section[] = [
     eyebrow: "Soluciones de Software y Soporte",
     title: "Computación & Soporte TI",
     renderSectionIcon: (className) => <Code2 size={26} className={className} />,
-    headerImage: "/computers.png",
+    headerImage: "/computers.webp",
     allHref: "/servicios/software-ti",
     allLabel: "Ver servicio",
     chips: [

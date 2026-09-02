@@ -261,9 +261,8 @@ export default function CategoriaDetail({ categoria }: Props) {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: index * 0.08 }}
                 >
-                  {/* Links directly to /servicios/[sub.slug] — not a subcategory route */}
                   <Link
-                    href={`/servicios/${sub.slug}`}
+                    href={`/servicios/${categoria.slug}/${sub.slug}`}
                     className="relative group flex flex-col bg-dark-slate/40 border border-[#242424] hover:border-[rgba(12,192,223,0.5)] hover:shadow-[0_8px_32px_rgba(12,192,223,0.12)] rounded-3xl transition-all duration-300 overflow-hidden h-full"
                   >
                     {sub.image ? (

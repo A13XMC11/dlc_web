@@ -2,19 +2,59 @@ import type { Metadata } from "next";
 import NavbarService from "@/components/servicios/NavbarService";
 import CategoriasIndexGrid from "@/components/servicios/CategoriasIndexGrid";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/seo/JsonLd";
+import { serviciosData } from "@/components/servicios/servicios-data";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  breadcrumbSchema,
+  servicesItemListSchema,
+} from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-  title: "Servicios de Seguridad Electrónica y Automatización | DLC Tecnológica",
+  title: "Servicios de Seguridad Electrónica, CCTV, Domótica e Ingeniería",
   description:
     "Conoce todos los servicios de DLC Tecnológica: CCTV, alarmas, control de accesos, domótica, portones automáticos, ingeniería eléctrica, soporte técnico y software especializado en Ecuador.",
   alternates: {
     canonical: "/servicios",
+  },
+  openGraph: {
+    title: "Servicios de Seguridad Electrónica, CCTV, Domótica e Ingeniería | DLC Tecnológica",
+    description:
+      "Servicios tecnológicos en Quito y Ecuador: CCTV, alarmas, control de accesos, domótica, portones automáticos, redes, software e ingeniería eléctrica.",
+    url: `${SITE_URL}/servicios`,
+    type: "website",
+    locale: "es_EC",
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 3090,
+        height: 1438,
+        alt: "Servicios de DLC Tecnológica en Quito y Ecuador",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios de Seguridad Electrónica, CCTV, Domótica e Ingeniería",
+    description:
+      "CCTV, alarmas, control de accesos, domótica, portones automáticos, redes, software e ingeniería eléctrica en Ecuador.",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
 export default function ServiciosPage() {
   return (
     <div className="relative min-h-screen flex flex-col bg-background overflow-x-hidden">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Inicio", url: SITE_URL },
+          { name: "Servicios", url: `${SITE_URL}/servicios` },
+        ])}
+      />
+      <JsonLd data={servicesItemListSchema(serviciosData)} />
       <NavbarService />
 
       <main className="flex-grow">
@@ -29,7 +69,7 @@ export default function ServiciosPage() {
               Nuestras Especialidades
             </p>
             <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
-              Todos los Servicios
+              Servicios de Seguridad Electrónica y Automatización
             </h1>
             <div className="h-1 w-20 bg-brand-cyan rounded-full mx-auto mb-8" />
             <p className="font-sans text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">

@@ -182,7 +182,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Teléfonos con video de portería: videoporteros IP con cámara HD y comunicación bidireccional, combinados con cerraduras inteligentes para identificar, autorizar y abrir accesos de forma remota desde cualquier dispositivo.",
         iconName: "Video",
-        image: "/images/services/video-portero.jpg",
+        image: "/images/services/video-portero.webp",
         features: [
           "Videoportero IP con cámara HD 2MP gran angular",
           "Cerraduras inteligentes con apertura remota, PIN o huella digital",
@@ -201,7 +201,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Control físico del paso de personas mediante torniquetes de trípode y bayas de alta resistencia para accesos de alta concurrencia.",
         iconName: "GitMerge",
-        image: "/images/services/control-flujo.jpg",
+        image: "/images/services/control-flujo.webp",
         features: [
           "Torniquetes de trípode para accesos peatonales de alto tráfico",
           "Bayas motorizadas bidireccionales de alta resistencia",
@@ -219,7 +219,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Lectura automática de credenciales RFID de largo alcance para control de acceso vehicular y peatonal sin contacto, compatible con tarjetas, llaveros y stickers.",
         iconName: "Radio",
-        image: "/images/services/antena-rfid.jpg",
+        image: "/images/services/antena-rfid.webp",
         features: [
           "Lectura de largo alcance hasta 10 metros sin detener la marcha",
           "Compatible con tarjetas ISO 14443/15693, llaveros y stickers",
@@ -237,7 +237,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Plataforma centralizada para gestión de accesos, registro de visitantes, generación de reportes y control de horarios del personal con trazabilidad completa.",
         iconName: "Monitor",
-        image: "/images/services/software-accesos.jpg",
+        image: "/images/services/software-accesos.webp",
         features: [
           "Panel de administración web multi-sede desde cualquier navegador",
           "Registro digital de visitantes con captura de foto",
@@ -567,7 +567,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Detección facial, reconocimiento de placas vehiculares, conteo de personas y análisis de comportamiento con IA embebida. Reduce falsas alarmas y genera inteligencia operativa.",
         iconName: "Cpu",
-        image: "/images/services/camara-ia-fixed.jpg",
+        image: "/images/services/camara-ia-fixed.webp",
         features: [
           "Reconocimiento facial en tiempo real con IA embebida",
           "Lectura automática de placas vehiculares LPR/ALPR",
@@ -686,7 +686,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Fabricación e instalación de estructuras metálicas a medida: cobertizos, pérgolas, portones decorativos y estructuras industriales con acabado galvanizado o pintura electrostática.",
         iconName: "Layers",
-        image: "/images/services/estructuras-metalicas.jpg",
+        image: "/images/services/estructuras-metalicas.webp",
         features: [
           "Fabricación completamente a medida en taller metalmecánico propio",
           "Cobertizos y pérgolas para exteriores residenciales y comerciales",
@@ -1225,7 +1225,7 @@ export const serviciosData: ServiceData[] = [
         description:
           "Videoporteros IP con cámara HD y comunicación bidireccional, integrados con cerraduras inteligentes para identificar, autorizar y abrir accesos de forma remota desde cualquier dispositivo.",
         iconName: "Video",
-        image: "/images/services/video-portero.jpg",
+        image: "/images/services/video-portero.webp",
         features: [
           "Videoportero IP con cámara HD 2MP gran angular",
           "Cerraduras inteligentes con apertura remota, PIN o huella digital",

@@ -6,7 +6,15 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { serviciosData } from "@/components/servicios/servicios-data";
 import JsonLd from "@/components/seo/JsonLd";
-import { SITE_URL, breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/seo/schema";
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbSchema,
+  faqSchema,
+  serviceSchema,
+} from "@/lib/seo/schema";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,20 +29,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = serviciosData.find((s) => s.slug === slug);
   if (!service) return {};
 
-  const seoDescription = `${service.description.slice(0, 140)} · DLC Tecnológica, Quito, Ecuador.`;
+  const seoDescription = `${service.description.slice(0, 145)} · DLC Tecnológica, Quito, Ecuador.`;
+  const pageUrl = `${SITE_URL}/servicios/${slug}`;
+  const imageUrl = service.mainImage ? absoluteUrl(service.mainImage) : DEFAULT_OG_IMAGE;
 
   return {
-    title: `${service.title} en Quito, Ecuador | DLC Tecnológica`,
+    title: `${service.title} en Quito, Ecuador`,
     description: seoDescription,
     openGraph: {
-      title: `${service.title} | DLC Tecnológica`,
+      title: `${service.title} en Quito, Ecuador | DLC Tecnológica`,
       description: seoDescription,
+      url: pageUrl,
       type: "website",
       locale: "es_EC",
-      siteName: "DLC Tecnológica",
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${service.title} en Quito y Ecuador - DLC Tecnológica`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.title} en Quito, Ecuador`,
+      description: seoDescription,
+      images: [imageUrl],
     },
     alternates: {
-      canonical: `https://dlc.com.ec/servicios/${slug}`,
+      canonical: pageUrl,
     },
   };
 }

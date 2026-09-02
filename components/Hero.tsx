@@ -5,15 +5,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownRight, Sparkles } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import cameraHero from "@/public/dlc-image-5.jpg";
+import cameraHero from "@/public/dlc-image-5.webp";
 import cameraHero2 from "@/public/images/hero-ai-cctv.webp";
 import cameraHero3 from "@/public/images/hero-gate.webp";
 import cameraHero4 from "@/public/images/hero-network.webp";
-import iconSeguridad from "@/public/seguridad-electrica.png";
-import iconServicio from "@/public/servicio-tecnico.png";
-import iconPortones from "@/public/portones-automaticos.png";
-import iconIngenieria from "@/public/ing-electrico.png";
-import iconComputers from "@/public/computers.png";
+import iconSeguridad from "@/public/seguridad-electrica.webp";
+import iconServicio from "@/public/servicio-tecnico.webp";
+import iconPortones from "@/public/portones-automaticos.webp";
+import iconIngenieria from "@/public/ing-electrico.webp";
+import iconComputers from "@/public/computers.webp";
+import iconDomotica from "@/public/domotica.webp";
+import iconEnergiasRenovables from "@/public/energias-renovables.webp";
 
 interface HeroSlide {
   src: StaticImageData;
@@ -41,6 +43,8 @@ const SERVICE_ICONS: ServiceIcon[] = [
   { img: iconPortones, alt: "Portones Automáticos", href: "/servicios/portones-automatizacion" },
   { img: iconIngenieria, alt: "Ingeniería Eléctrica y Electrónica", href: "/servicios/ingenieria-electrica" },
   { img: iconComputers, alt: "Computadores y Software", href: "/servicios/software-ti" },
+  { img: iconDomotica, alt: "Domótica", href: "/servicios/domotica" },
+  { img: iconEnergiasRenovables, alt: "Energías Renovables", href: "/servicios/ingenieria-electrica/paneles-solares" },
 ];
 
 export default function Hero() {

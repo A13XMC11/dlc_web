@@ -8,6 +8,23 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
+  const contactActions = [
+    {
+      label: "WhatsApp de DLC Tecnológica",
+      href: "https://wa.me/593958689116",
+      icon: Phone,
+    },
+    {
+      label: "Correo de DLC Tecnológica",
+      href: "mailto:info@dlc.com.ec",
+      icon: Mail,
+    },
+    {
+      label: "Ubicación de DLC Tecnológica en Quito",
+      href: "https://www.google.com/maps/search/?api=1&query=DLC+TECNOLOGICA+Jos%C3%A9+Berrutieta+y+Miguel+Acevedo+Quito+Ecuador",
+      icon: MapPin,
+    },
+  ];
 
   // On the homepage, scroll smoothly to the in-page anchor. On any other
   // page, let next/link navigate to "/#hash" normally — it handles the
@@ -46,7 +63,7 @@ export default function Footer() {
               className="self-start"
             >
               <Image
-                src="/logo-dlc.png"
+                src="/logo-dlc.webp"
                 alt="DLC TEC"
                 width={140}
                 height={65}
@@ -58,48 +75,18 @@ export default function Footer() {
               DLC Tecnológica se dedica a llevar la innovación a tu vida diaria a través de soluciones robustas en seguridad electrónica, automatizaciones inteligentes, domótica avanzada y conectividad.
             </p>
 
-            {/* Social Links */}
+            {/* Contact actions */}
             <div className="flex items-center gap-3">
-              {[
-                {
-                  label: "Facebook de DLC Tecnológica",
-                  icon: (
-                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1H13c-3 0-4 2-4 4v3z" />
-                    </svg>
-                  ),
-                  href: "https://facebook.com"
-                },
-                {
-                  label: "Instagram de DLC Tecnológica",
-                  icon: (
-                    <svg className="w-4 h-4 text-current stroke-2 fill-none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                  ),
-                  href: "https://instagram.com"
-                },
-                {
-                  label: "LinkedIn de DLC Tecnológica",
-                  icon: (
-                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg>
-                  ),
-                  href: "https://linkedin.com"
-                },
-              ].map((social, idx) => (
+              {contactActions.map(({ label, href, icon: Icon }) => (
                 <a
-                  key={idx}
-                  href={social.href}
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
+                  aria-label={label}
                   className="w-10 h-10 rounded-xl bg-[#0e4956] border border-[#242424] flex items-center justify-center text-slate-400 hover:text-brand-cyan hover:border-brand-cyan/30 transition-all duration-300"
                 >
-                  {social.icon}
+                  <Icon className="w-4 h-4" aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -113,17 +100,22 @@ export default function Footer() {
             <ul className="flex flex-col gap-3.5">
               {[
                 { name: "Inicio", href: "/#inicio" },
-                { name: "Sobre Nosotros", href: "/#nosotros" },
+                { name: "Sobre Nosotros", href: "/nosotros" },
                 { name: "Servicios", href: "/#servicios" },
                 { name: "Estadísticas", href: "/#estadisticas" },
                 { name: "Proyectos", href: "/#proyectos" },
                 { name: "Testimonios", href: "/#testimonios" },
                 { name: "Contacto", href: "/#contacto" },
+                { name: "Trabaja con Nosotros", href: "/trabaja-con-nosotros" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    onClick={(e) => handleScrollToSection(e, link.href.slice(1))}
+                    onClick={
+                      link.href.startsWith("/#")
+                        ? (e) => handleScrollToSection(e, link.href.slice(1))
+                        : undefined
+                    }
                     className="text-sm text-slate-400 hover:text-brand-cyan transition-colors font-sans"
                   >
                     {link.name}
@@ -140,17 +132,21 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-3.5">
               {[
-                { name: "Seguridad Electrónica", href: "/#especialidad-seguridad-electronica" },
-                { name: "Puertas Automáticas", href: "/#especialidad-portones-automatizacion" },
-                { name: "Domótica & Smart Home", href: "/#especialidad-seguridad-electronica" },
-                { name: "Redes Estructuradas", href: "/#especialidad-ingenieria-electrica" },
-                { name: "Energías Renovables", href: "/#servicios" },
-                { name: "Computación & Soporte TI", href: "/#especialidad-software-ti" },
+                { name: "Seguridad Electrónica", href: "/servicios/seguridad-electronica" },
+                { name: "Puertas Automáticas", href: "/servicios/portones-automatizacion" },
+                { name: "Domótica & Smart Home", href: "/servicios/domotica" },
+                { name: "Redes Estructuradas", href: "/servicios/ingenieria-electrica/redes-voz-datos" },
+                { name: "Energías Renovables", href: "/servicios/ingenieria-electrica/paneles-solares" },
+                { name: "Computación & Soporte TI", href: "/servicios/software-ti" },
               ].map((spec) => (
                 <li key={spec.name}>
                   <Link
                     href={spec.href}
-                    onClick={(e) => handleScrollToSection(e, spec.href.slice(1))}
+                    onClick={
+                      spec.href.startsWith("/#")
+                        ? (e) => handleScrollToSection(e, spec.href.slice(1))
+                        : undefined
+                    }
                     className="text-sm text-slate-400 hover:text-brand-cyan transition-colors font-sans"
                   >
                     {spec.name}
@@ -198,12 +194,12 @@ export default function Footer() {
             &copy; {currentYear} DLC Tecnológica. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
+            <Link href="/politica-privacidad" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
               Políticas de Privacidad
-            </a>
-            <a href="#" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
+            </Link>
+            <Link href="/terminos-servicio" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
               Términos de Servicio
-            </a>
+            </Link>
           </div>
         </div>
 

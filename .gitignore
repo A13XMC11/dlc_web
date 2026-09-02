@@ -22,6 +22,7 @@ node_modules.nosync
 # local tooling / scratch (not part of the app)
 .atl/
 .playwright-mcp/
+.build-backups/
 node_modules 2/
 .next 2/
 Manual de marca DLC.pdf

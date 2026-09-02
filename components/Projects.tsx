@@ -14,7 +14,7 @@ const projectsList = [
     title: "CCTV Corporativo Edificio Alpha",
     category: "Seguridad",
     location: "Quito, Ecuador",
-    image: "/project-cctv.png",
+    image: "/project-cctv.webp",
     desc: "Instalación de 48 cámaras IP dome 4K con analíticas de detección de rostros e intrusiones.",
   },
   {
@@ -22,7 +22,7 @@ const projectsList = [
     title: "Residencia Inteligente Cumbayá",
     category: "Smart Home",
     location: "Cumbayá, Pichincha",
-    image: "/project-smart.png",
+    image: "/project-smart.webp",
     desc: "Automatización de iluminación Lutron, persianas eléctricas, clima y sonido invisible multiroom.",
   },
   {
@@ -30,7 +30,7 @@ const projectsList = [
     title: "Portón Automatizado Urbanización Valle",
     category: "Automatización",
     location: "Valle de los Chillos",
-    image: "/project-gate.png",
+    image: "/project-gate.webp",
     desc: "Portón corredizo de alto tráfico con motor italiano, apertura celular y control RFID.",
   },
   {
@@ -38,7 +38,7 @@ const projectsList = [
     title: "Vigilancia Perimetral Planta Industrial",
     category: "Seguridad",
     location: "Guayaquil, Ecuador",
-    image: "/dlc-image-5.jpg",
+    image: "/dlc-image-5.webp",
     desc: "Cámaras bullet en torre para perímetro industrial, con visión nocturna y alarma activa.",
   },
   {
@@ -46,7 +46,7 @@ const projectsList = [
     title: "Instalación CCTV con PTZ Dome",
     category: "Seguridad",
     location: "Quito, Ecuador",
-    image: "/images/dlc-image-2.jpg",
+    image: "/images/dlc-image-2.webp",
     desc: "Despliegue completo de sistema CCTV con cámara PTZ dome y cableado estructurado certificado.",
   },
   {
@@ -54,7 +54,7 @@ const projectsList = [
     title: "Control de Acceso Edificio Residencial",
     category: "Automatización",
     location: "Samborondón, Guayas",
-    image: "/dlc-image-1.jpg",
+    image: "/dlc-image-1.webp",
     desc: "Sistema de cámara bullet IP con control de acceso biométrico y videoportero integrado.",
   },
 ];
