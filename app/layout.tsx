@@ -10,7 +10,6 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
-  SYMBOL_IMAGE,
   localBusinessSchema,
   siteNavigationSchema,
   websiteSchema,
@@ -68,9 +67,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: SYMBOL_IMAGE,
-    shortcut: SYMBOL_IMAGE,
-    apple: SYMBOL_IMAGE,
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",
