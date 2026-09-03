@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { serviciosData } from "@/components/servicios/servicios-data";
+import { blogPosts } from "@/lib/blog/posts";
 import { LAST_MODIFIED, SITE_URL } from "@/lib/seo/schema";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,6 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
       images: [`${SITE_URL}/images/services-bg-2.webp`],
+    },
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: "weekly",
+      priority: 0.75,
+      images: [`${SITE_URL}/images/hero-ai-cctv.webp`],
     },
     { url: `${SITE_URL}/cotizador`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.85 },
     {
@@ -54,5 +62,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...serviceRoutes, ...subcategoryRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+    images: [`${SITE_URL}${post.image}`],
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...subcategoryRoutes, ...blogRoutes];
 }

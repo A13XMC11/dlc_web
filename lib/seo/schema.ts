@@ -1,4 +1,5 @@
 import type { Faq, ServiceData, Subcategory } from "@/components/servicios/servicios-data";
+import type { BlogPost } from "@/lib/blog/posts";
 
 export const SITE_URL = "https://dlc.com.ec";
 export const SITE_NAME = "DLC Tecnológica";
@@ -205,6 +206,7 @@ export function siteNavigationSchema() {
     { name: "Inicio", url: SITE_URL },
     { name: "Nosotros", url: `${SITE_URL}/nosotros` },
     { name: "Servicios", url: `${SITE_URL}/servicios` },
+    { name: "Blog", url: `${SITE_URL}/blog` },
     { name: "Cotizador", url: `${SITE_URL}/cotizador` },
     { name: "Trabaja con Nosotros", url: `${SITE_URL}/trabaja-con-nosotros` },
     { name: "Contacto", url: `${SITE_URL}/#contacto` },
@@ -279,5 +281,59 @@ export function jobPostingSchema() {
       name: "Ecuador",
     },
     directApply: true,
+  };
+}
+
+export function blogSchema(posts: BlogPost[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE_URL}/blog#blog`,
+    name: `Blog de ${SITE_NAME}`,
+    description:
+      "Guías prácticas sobre seguridad electrónica, CCTV, control de accesos, domótica, redes e ingeniería eléctrica en Ecuador.",
+    url: `${SITE_URL}/blog`,
+    inLanguage: "es-EC",
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt,
+      image: absoluteUrl(post.image),
+      author: {
+        "@id": `${SITE_URL}/#organization`,
+      },
+    })),
+  };
+}
+
+export function blogPostingSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${SITE_URL}/blog/${post.slug}#article`,
+    headline: post.title,
+    description: post.description,
+    image: absoluteUrl(post.image),
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    author: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
+    articleSection: post.category,
+    keywords: post.keywords.join(", "),
+    inLanguage: "es-EC",
   };
 }

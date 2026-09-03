@@ -22,6 +22,10 @@ El sitio ya cuenta con fundamentos sólidos: metadata por página, canonical tag
 10. Se reemplazaron enlaces sociales genéricos por acciones verificables: WhatsApp, correo y ubicación.
 11. Se añadió `manifest.webmanifest`, `/icon` y `/apple-icon` para reforzar identidad técnica del sitio.
 12. Se añadieron breadcrumbs JSON-LD en `/servicios` y `/nosotros`.
+13. Se añadió la sección `/blog` como hub indexable de contenido experto.
+14. Se crearon 3 artículos iniciales orientados a búsquedas locales: CCTV para empresas en Quito, control de accesos para edificios y domótica residencial.
+15. Se añadieron `Blog`, `BlogPosting` y breadcrumbs JSON-LD para el blog y sus artículos.
+16. Se incorporaron `/blog` y los artículos en `sitemap.xml`, `llms.txt`, navegación principal y footer para reforzar enlazado interno.
 
 ## Lo Que Ya Está Bien
 
@@ -34,6 +38,7 @@ El sitio ya cuenta con fundamentos sólidos: metadata por página, canonical tag
 - Imágenes servidas en WebP y mayoritariamente con `next/image`.
 - CTAs claros a WhatsApp y cotizador.
 - Página `/nosotros` indexable para reforzar entidad, marca, experiencia y confianza.
+- Blog indexable con contenido técnico evergreen para captar búsquedas informativas.
 - Manifest e iconos de aplicación generados por Next.
 - Footer con enlaces internos a URLs indexables de servicios clave.
 
@@ -42,7 +47,7 @@ El sitio ya cuenta con fundamentos sólidos: metadata por página, canonical tag
 1. **Google Business Profile**: reclamar/optimizar la ficha con misma dirección, teléfono, horario, sitio web, fotos reales y categorías correctas.
 2. **Backlinks locales**: directorios ecuatorianos, cámaras/comunidades empresariales, proveedores, clientes y casos de éxito enlazando a páginas específicas.
 3. **Prueba social verificable**: reseñas reales, testimonios con nombre/empresa y proyectos documentados.
-4. **Contenido experto**: casos de estudio y guías locales como “cuánto cuesta instalar CCTV en Quito” o “requisitos de control de incendios para Bomberos”.
+4. **Contenido experto**: continuar publicando casos de estudio, guías locales y comparativas técnicas para ampliar autoridad temática.
 5. **Métricas post-deploy**: validar Search Console, PageSpeed Insights/Core Web Vitals y Rich Results Test en URLs públicas.
 
 ## Prioridades Siguientes
@@ -51,5 +56,6 @@ El sitio ya cuenta con fundamentos sólidos: metadata por página, canonical tag
 2. Conectar Bing Webmaster Tools y enviar el sitemap.
 3. Validar datos estructurados en Rich Results Test y Schema Markup Validator.
 4. Crear 3-5 casos de éxito con fotos reales, ubicación, problema, solución y resultado.
-5. Añadir nombres de marcas, certificaciones y garantías reales cuando el negocio confirme esos datos.
-6. Confirmar el dominio oficial definitivo (`dlc.com.ec` vs. `DLCtecnologia.com`) para mantener canonicals, ficha de Google y materiales externos 100% consistentes.
+5. Mantener una cadencia de 2-4 artículos mensuales enlazados a servicios específicos.
+6. Añadir nombres de marcas, certificaciones y garantías reales cuando el negocio confirme esos datos.
+7. Confirmar el dominio oficial definitivo (`dlc.com.ec` vs. `DLCtecnologia.com`) para mantener canonicals, ficha de Google y materiales externos 100% consistentes.

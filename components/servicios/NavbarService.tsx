@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Inicio",          href: "/#inicio" },
   { name: "Sobre Nosotros",  href: "/nosotros" },
   { name: "Servicios",       href: "/servicios" },
+  { name: "Blog",            href: "/blog" },
   { name: "Estadísticas",    href: "/#estadisticas" },
   { name: "Proyectos",       href: "/#proyectos" },
   { name: "Testimonios",     href: "/#testimonios" },
@@ -53,12 +54,12 @@ export default function NavbarService() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-sans text-sm font-medium relative group py-2 text-[#94a3b8] hover:text-white transition-colors duration-300"
+                className="font-sans text-xs lg:text-sm font-medium relative group py-2 text-[#94a3b8] hover:text-white transition-colors duration-300"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-cyan/50 group-hover:w-full transition-all duration-300 ease-in-out" />

@@ -102,6 +102,7 @@ export default function Footer() {
                 { name: "Inicio", href: "/#inicio" },
                 { name: "Sobre Nosotros", href: "/nosotros" },
                 { name: "Servicios", href: "/#servicios" },
+                { name: "Blog", href: "/blog" },
                 { name: "Estadísticas", href: "/#estadisticas" },
                 { name: "Proyectos", href: "/#proyectos" },
                 { name: "Testimonios", href: "/#testimonios" },
@@ -138,6 +139,7 @@ export default function Footer() {
                 { name: "Redes Estructuradas", href: "/servicios/ingenieria-electrica/redes-voz-datos" },
                 { name: "Energías Renovables", href: "/servicios/ingenieria-electrica/paneles-solares" },
                 { name: "Computación & Soporte TI", href: "/servicios/software-ti" },
+                { name: "Blog de Seguridad", href: "/blog" },
               ].map((spec) => (
                 <li key={spec.name}>
                   <Link
@@ -199,6 +201,9 @@ export default function Footer() {
             </Link>
             <Link href="/terminos-servicio" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
               Términos de Servicio
+            </Link>
+            <Link href="/blog" className="text-xs text-slate-500 hover:text-cyan-neon transition-colors">
+              Blog
             </Link>
           </div>
         </div>
